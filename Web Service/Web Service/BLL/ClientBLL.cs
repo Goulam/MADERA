@@ -8,7 +8,7 @@ using Madera.ClassLibrary.Entity;
 
 namespace Madera.ClassLibrary.BLL
 {
-    public class ClientBLL : ClientDAO
+    public class ClientController : ClientDAO
     {
         public bool insertClientInDb(ClientEntity client)
         {
@@ -30,7 +30,7 @@ namespace Madera.ClassLibrary.BLL
 
         public List<ClientEntity> getSearchAll(string search)
         {
-            return ClientBLL.GetSearchAll(search);
+            return ClientController.GetSearchAll(search);
         }
     }
 }

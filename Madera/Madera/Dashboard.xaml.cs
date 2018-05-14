@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Madera.ClassLibrary.BLL;
 using Madera.ClassLibrary.Entity;
+using System.Collections.ObjectModel;
 
 namespace Madera
 {
@@ -22,23 +22,46 @@ namespace Madera
     /// </summary>
     public partial class Dashboard : Window
     {
+        //
+        // Variable de "session"  
+        //
+
         CommerciauxEntity commercial;
         GammesEntity gammesDevis = new GammesEntity();
+        ComposantsEntity compIsolation = new ComposantsEntity();
+        ComposantsEntity compCouverture = new ComposantsEntity();
+        
+
         public ObservableCollection<GammesEntity> listGamme { get; set; }
+        public ObservableCollection<ComposantsEntity> listIsolant { get; set; }
 
         public Dashboard()
         {
             InitializeComponent();
             this.DataContext = this;
             BindGamme();
+            BindIsolation();
         }
 
         private void BindGamme()
         {
             listGamme = new ObservableCollection<GammesEntity>();
-            GammesController games = new GammesController();
+            GammesBLL games = new GammesBLL();
             listGamme = new ObservableCollection<GammesEntity>(games.selectAllGames());
-            
+        }
+        
+        private void BindIsolation()
+        {
+            listIsolant = new ObservableCollection<ComposantsEntity>();
+            ComposantsBLL composants = new ComposantsBLL();
+            listIsolant = new ObservableCollection<ComposantsEntity>(composants.getIsolationComposant());
+        }
+
+        private void BindCouverture()
+        {
+            listIsolant = new ObservableCollection<ComposantsEntity>();
+            ComposantsBLL composants = new ComposantsBLL();
+            listIsolant = new ObservableCollection<ComposantsEntity>(composants.getCouvertureComposant());
         }
 
         public void setCommercial(CommerciauxEntity entering)
@@ -84,7 +107,7 @@ namespace Madera
             selectEnvoi.Visibility = Visibility.Hidden;
 
 
-            ClientBLL clientControl = new ClientBLL();
+            ClientController clientControl = new ClientController();
             clientList.ItemsSource = clientControl.getAll();
         }
 
@@ -109,19 +132,12 @@ namespace Madera
         {
             creerDevis.Visibility = Visibility.Hidden;
             selectGamme.Visibility = Visibility.Visible;
-
-            //foreach(var item in listGamme)
-            //{
-            //    ChoisirGamme.Items.Add(item);
-            //}
-
         }
      
 
         public void goToSelectFinition(object sender, RoutedEventArgs e)
         {
-
-            gammesDevis = (GammesEntity)ChoisirGamme.SelectedItem;
+            gammesDevis.Gam_Nom = ChoisirGamme.SelectedItem.ToString();
 
             selectGamme.Visibility = Visibility.Hidden;
             selectFinition.Visibility = Visibility.Visible;
@@ -129,6 +145,9 @@ namespace Madera
         }
         public void goToSelectModele(object sender, RoutedEventArgs e)
         {
+            compIsolation = (ComposantsEntity)ChoisirTypeIsolant.SelectedItem;
+            compCouverture = (ComposantsEntity)ChoisirTypeCouverture.SelectedItem;
+
             selectFinition.Visibility = Visibility.Hidden;
             selectModele.Visibility = Visibility.Visible;
 
@@ -193,7 +212,7 @@ namespace Madera
 
         public void updateSearch(object sender, RoutedEventArgs e)
         {
-            ClientBLL clientControl = new ClientBLL();
+            ClientController clientControl = new ClientController();
 
             if(inputSearchClient.Text.Length > 0)
             {
@@ -217,7 +236,7 @@ namespace Madera
                 client.Cli_CP = inputCP.Text;
                 try
                 {
-                    ClientBLL controlClient = new ClientBLL();
+                    ClientController controlClient = new ClientController();
                     controlClient.createClient(client);
                     enregistrerClient.Visibility = Visibility.Hidden;
                     succesSaveClient.Visibility = Visibility.Visible;
@@ -266,7 +285,7 @@ namespace Madera
             clientUpdte.Cli_Actif = 1;
             clientUpdte.Cli_Index = Int32.Parse(idModifyClient.Text);
 
-            ClientBLL controlClt = new ClientBLL();
+            ClientController controlClt = new ClientController();
 
             try
             {
