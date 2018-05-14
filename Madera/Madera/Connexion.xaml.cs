@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Web_Service.Controller;
-using Web_Service.Entity;
+using Madera.ClassLibrary.BLL;
+using Madera.ClassLibrary.Entity;
 using System.Security.Cryptography;
 
 namespace Madera

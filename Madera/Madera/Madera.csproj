@@ -111,13 +111,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="madera.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Web Service\Web Service\Web Service.csproj">
+    <ProjectReference Include="..\..\Web Service\Web Service\Madera.ClassLibrary.csproj">
       <Project>{100977c0-80a4-4a30-91c6-b625294d898a}</Project>
       <Name>Web Service</Name>
     </ProjectReference>

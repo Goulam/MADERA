@@ -378,7 +378,13 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock x:Name="choixGamme" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Choisir la gamme : " Margin="0,0,0,0.008" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBox x:Name="ChoisirGamme" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0" d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirGamme" ItemsSource="{Binding listGamme}" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0" d:LayoutOverrides="Height" VerticalAlignment="Center">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Gam_Nom}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Button x:Name="butonArianeGamme" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
             <Button x:Name="butonArianeFinition" Content="2 - Finition" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
             <Button x:Name="butonArianeModèle" Content="3 - Modèle" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>

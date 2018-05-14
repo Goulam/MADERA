@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Web_Service.Controller;
-using Web_Service.Entity;
+using Madera.ClassLibrary.BLL;
+using Madera.ClassLibrary.Entity;
+using System.Collections.ObjectModel;
 
 namespace Madera
 {
@@ -47,7 +48,6 @@ namespace Madera
             listGamme = new ObservableCollection<GammesEntity>();
             GammesBLL games = new GammesBLL();
             listGamme = new ObservableCollection<GammesEntity>(games.selectAllGames());
-            
         }
         
         private void BindIsolation()

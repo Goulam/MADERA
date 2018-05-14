@@ -53,9 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ClientBLL.cs" />
     <Compile Include="BLL\CommerciauxBLL.cs" />
     <Compile Include="BLL\ComposantsBLL.cs" />
-    <Compile Include="BLL\ClientBLL.cs" />
     <Compile Include="BLL\GammesBLL.cs" />
     <Compile Include="Entity\ClientEntity.cs" />
     <Compile Include="Entity\CommandesEntity.cs" />
