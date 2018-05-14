@@ -8,7 +8,7 @@ using Madera.ClassLibrary.Entity;
 
 namespace Madera.ClassLibrary.BLL
 {
-    public class CommerciauxBLL : CommerciauxDAO
+    public class CommerciauxController : CommerciauxDAO
     {
         public CommerciauxEntity getActiveCommerciauxByEmail(string Email)
         {

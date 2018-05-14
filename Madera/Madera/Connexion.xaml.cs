@@ -36,7 +36,7 @@ namespace Madera
         void OnClickValidate(object sender, RoutedEventArgs e)
         {
 
-            CommerciauxBLL commercialControl = new CommerciauxBLL();
+            CommerciauxController commercialControl = new CommerciauxController();
             
             commercial = commercialControl.getActiveCommercialByEmail(inputId.Text);
             if(commercial == null)
