@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madera", "Madera\Madera.csproj", "{109E0112-2DDC-43C4-87E4-35035568501C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web Service", "..\Web Service\Web Service\Web Service.csproj", "{100977C0-80A4-4A30-91C6-B625294D898A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madera.ClassLibrary", "..\Web Service\Web Service\Madera.ClassLibrary.csproj", "{100977C0-80A4-4A30-91C6-B625294D898A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

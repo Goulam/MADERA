@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Web_Service.Model;
-using Web_Service.Entity;
+using Madera.ClassLibrary.Model;
+using Madera.ClassLibrary.Entity;
 
-namespace Web_Service.Controller
+namespace Madera.ClassLibrary.BLL
 {
     public class GammesController : GammesDAO
     {

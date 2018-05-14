@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Web_Service.Controller;
-using Web_Service.Entity;
+using Madera.ClassLibrary.BLL;
+using Madera.ClassLibrary.Entity;
 
 namespace Madera
 {
@@ -23,15 +24,21 @@ namespace Madera
     {
         CommerciauxEntity commercial;
         GammesEntity gammesDevis = new GammesEntity();
-        public List<GammesEntity> listGamme ;
+        public ObservableCollection<GammesEntity> listGamme { get; set; }
 
         public Dashboard()
         {
             InitializeComponent();
-            listGamme = new List<GammesEntity>();
-            GammesController games = new GammesController();
+            this.DataContext = this;
+            BindGamme();
+        }
 
-            listGamme = games.selectAllGames();
+        private void BindGamme()
+        {
+            listGamme = new ObservableCollection<GammesEntity>();
+            GammesController games = new GammesController();
+            listGamme = new ObservableCollection<GammesEntity>(games.selectAllGames());
+            
         }
 
         public void setCommercial(CommerciauxEntity entering)
@@ -77,7 +84,7 @@ namespace Madera
             selectEnvoi.Visibility = Visibility.Hidden;
 
 
-            ClientController clientControl = new ClientController();
+            ClientBLL clientControl = new ClientBLL();
             clientList.ItemsSource = clientControl.getAll();
         }
 
@@ -113,7 +120,8 @@ namespace Madera
 
         public void goToSelectFinition(object sender, RoutedEventArgs e)
         {
-            gammesDevis.Gam_Nom = ChoisirGamme.SelectedItem.ToString();
+
+            gammesDevis = (GammesEntity)ChoisirGamme.SelectedItem;
 
             selectGamme.Visibility = Visibility.Hidden;
             selectFinition.Visibility = Visibility.Visible;
@@ -185,7 +193,7 @@ namespace Madera
 
         public void updateSearch(object sender, RoutedEventArgs e)
         {
-            ClientController clientControl = new ClientController();
+            ClientBLL clientControl = new ClientBLL();
 
             if(inputSearchClient.Text.Length > 0)
             {
@@ -209,7 +217,7 @@ namespace Madera
                 client.Cli_CP = inputCP.Text;
                 try
                 {
-                    ClientController controlClient = new ClientController();
+                    ClientBLL controlClient = new ClientBLL();
                     controlClient.createClient(client);
                     enregistrerClient.Visibility = Visibility.Hidden;
                     succesSaveClient.Visibility = Visibility.Visible;
@@ -258,7 +266,7 @@ namespace Madera
             clientUpdte.Cli_Actif = 1;
             clientUpdte.Cli_Index = Int32.Parse(idModifyClient.Text);
 
-            ClientController controlClt = new ClientController();
+            ClientBLL controlClt = new ClientBLL();
 
             try
             {
