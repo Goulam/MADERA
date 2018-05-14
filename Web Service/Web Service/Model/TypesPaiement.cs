@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Madera.ClassLibrary.Entity;
+using Web_Service.Entity;
 
-namespace Madera.ClassLibrary.Model
+namespace Web_Service.Model
 {
     public class TypesPaiement
     {

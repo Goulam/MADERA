@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Madera.ClassLibrary.Model;
-using Madera.ClassLibrary.Entity;
+using Web_Service.Model;
+using Web_Service.Entity;
 
-namespace Madera.ClassLibrary.BLL
+namespace Web_Service.Controller
 {
-    public class CommerciauxBLL : CommerciauxDAO
+    public class CommerciauxController : CommerciauxDAO
     {
         public CommerciauxEntity getActiveCommerciauxByEmail(string Email)
         {

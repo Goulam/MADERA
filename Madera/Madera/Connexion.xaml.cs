@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Madera.ClassLibrary.BLL;
-using Madera.ClassLibrary.Entity;
+using Web_Service.Controller;
+using Web_Service.Entity;
 using System.Security.Cryptography;
 
 namespace Madera
@@ -36,7 +36,7 @@ namespace Madera
         void OnClickValidate(object sender, RoutedEventArgs e)
         {
 
-            CommerciauxBLL commercialControl = new CommerciauxBLL();
+            CommerciauxController commercialControl = new CommerciauxController();
             
             commercial = commercialControl.getActiveCommercialByEmail(inputId.Text);
             if(commercial == null)

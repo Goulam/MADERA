@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Madera.ClassLibrary.Entity
+namespace Web_Service.Entity
 {
     public class CommerciauxEntity
     {
