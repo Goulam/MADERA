@@ -1,0 +1,1514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MADERA_V1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MDR_Appartient_Modeles_Gammes">
+          <Key>
+            <PropertyRef Name="Gam_Index" />
+            <PropertyRef Name="Model_Index" />
+          </Key>
+          <Property Name="Gam_Index" Type="int" Nullable="false" />
+          <Property Name="Model_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Appartient_Sites_Fournisseurs">
+          <Key>
+            <PropertyRef Name="Four_Index" />
+            <PropertyRef Name="Sts_Index" />
+          </Key>
+          <Property Name="Four_Index" Type="int" Nullable="false" />
+          <Property Name="Sts_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Avancer_Etat_Paiement">
+          <Key>
+            <PropertyRef Name="EPai_Index" />
+            <PropertyRef Name="Pai_Index" />
+          </Key>
+          <Property Name="EPai_Index" Type="int" Nullable="false" />
+          <Property Name="Pai_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Choisir_Type_Paiement">
+          <Key>
+            <PropertyRef Name="Pai_Index" />
+            <PropertyRef Name="TPai_Index" />
+          </Key>
+          <Property Name="Pai_Index" Type="int" Nullable="false" />
+          <Property Name="TPai_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Clients">
+          <Key>
+            <PropertyRef Name="Cli_Index" />
+          </Key>
+          <Property Name="Cli_Index" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cli_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cli_Prenom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cli_Adresse" Type="varchar" MaxLength="255" />
+          <Property Name="Cli_Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cli_Phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Cli_Age" Type="int" />
+          <Property Name="Cli_Ville" Type="varchar" MaxLength="255" />
+          <Property Name="Cli_CP" Type="varchar" MaxLength="255" />
+          <Property Name="Cli_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Commande_Client_Commandes">
+          <Key>
+            <PropertyRef Name="Cli_Index" />
+            <PropertyRef Name="Comma_Index" />
+          </Key>
+          <Property Name="Cli_Index" Type="int" Nullable="false" />
+          <Property Name="Comma_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Commandes">
+          <Key>
+            <PropertyRef Name="Comma_Index" />
+          </Key>
+          <Property Name="Comma_Index" Type="int" Nullable="false" />
+          <Property Name="Comma_Prix" Type="decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="Comma_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Commerciaux">
+          <Key>
+            <PropertyRef Name="Com_Index" />
+          </Key>
+          <Property Name="Com_Index" Type="int" Nullable="false" />
+          <Property Name="Com_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Com_Identifiant" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Com_Mdp" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Com_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Composants">
+          <Key>
+            <PropertyRef Name="Comp_Index" />
+          </Key>
+          <Property Name="Comp_Index" Type="int" Nullable="false" />
+          <Property Name="Comp_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Comp_Type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Comp_Couleur" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Comp_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Contient_Client_Devis">
+          <Key>
+            <PropertyRef Name="Cli_Index" />
+            <PropertyRef Name="Dev_Idex" />
+          </Key>
+          <Property Name="Cli_Index" Type="int" Nullable="false" />
+          <Property Name="Dev_Idex" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Contient_Composants_Devis">
+          <Key>
+            <PropertyRef Name="Comp_Index" />
+            <PropertyRef Name="Dev_Index" />
+          </Key>
+          <Property Name="Comp_Index" Type="int" Nullable="false" />
+          <Property Name="Dev_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Contient_Composants_Modules">
+          <Key>
+            <PropertyRef Name="Comp_Index" />
+            <PropertyRef Name="Mod_Index" />
+          </Key>
+          <Property Name="Comp_Index" Type="int" Nullable="false" />
+          <Property Name="Mod_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Contient_Modeles_Devis">
+          <Key>
+            <PropertyRef Name="Dev_Index" />
+            <PropertyRef Name="Model_Index" />
+          </Key>
+          <Property Name="Dev_Index" Type="int" Nullable="false" />
+          <Property Name="Model_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Contient_Modules_Devis">
+          <Key>
+            <PropertyRef Name="Mod_Index" />
+            <PropertyRef Name="Dev_Index" />
+          </Key>
+          <Property Name="Mod_Index" Type="int" Nullable="false" />
+          <Property Name="Dev_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Contient_Modules_Modeles">
+          <Key>
+            <PropertyRef Name="Mod_Index" />
+            <PropertyRef Name="Model_Index" />
+          </Key>
+          <Property Name="Mod_Index" Type="int" Nullable="false" />
+          <Property Name="Model_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Creer_Commercial_Devis">
+          <Key>
+            <PropertyRef Name="Com_Index" />
+            <PropertyRef Name="Dev_Index" />
+          </Key>
+          <Property Name="Com_Index" Type="int" Nullable="false" />
+          <Property Name="Dev_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Devis">
+          <Key>
+            <PropertyRef Name="Dev_Index" />
+          </Key>
+          <Property Name="Dev_Index" Type="int" Nullable="false" />
+          <Property Name="Dev_Prix" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Dev_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Etat_Paiement">
+          <Key>
+            <PropertyRef Name="EPai_Index" />
+          </Key>
+          <Property Name="EPai_Index" Type="int" Nullable="false" />
+          <Property Name="EPai_Etat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EPai_Date" Type="datetime" Nullable="false" />
+          <Property Name="EPai_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Fourni_Fournisseur_Composants">
+          <Key>
+            <PropertyRef Name="Comp_Index" />
+            <PropertyRef Name="Four_Index" />
+          </Key>
+          <Property Name="Comp_Index" Type="int" Nullable="false" />
+          <Property Name="Four_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Fournisseurs">
+          <Key>
+            <PropertyRef Name="Four_Index" />
+          </Key>
+          <Property Name="Four_Index" Type="int" Nullable="false" />
+          <Property Name="Four_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Four_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Gammes">
+          <Key>
+            <PropertyRef Name="Gam_Index" />
+          </Key>
+          <Property Name="Gam_Index" Type="int" Nullable="false" />
+          <Property Name="Gam_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Gam_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Modeles">
+          <Key>
+            <PropertyRef Name="Model_Index" />
+          </Key>
+          <Property Name="Model_Index" Type="int" Nullable="false" />
+          <Property Name="Model_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Model_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Modules">
+          <Key>
+            <PropertyRef Name="Mod_Index" />
+          </Key>
+          <Property Name="Mod_Index" Type="int" Nullable="false" />
+          <Property Name="Mod_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Mod_Prix" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Mod_Date" Type="datetime" />
+          <Property Name="Mod_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Paiement">
+          <Key>
+            <PropertyRef Name="Pai_Index" />
+          </Key>
+          <Property Name="Pai_Index" Type="int" Nullable="false" />
+          <Property Name="Pai_Type" Type="int" Nullable="false" />
+          <Property Name="Pai_Etat" Type="int" Nullable="false" />
+          <Property Name="Pai_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Payer_Commandes_Paiement">
+          <Key>
+            <PropertyRef Name="Pai_Index" />
+            <PropertyRef Name="Comma_Index" />
+          </Key>
+          <Property Name="Pai_Index" Type="int" Nullable="false" />
+          <Property Name="Comma_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Sites">
+          <Key>
+            <PropertyRef Name="Sts_Index" />
+          </Key>
+          <Property Name="Sts_Index" Type="int" Nullable="false" />
+          <Property Name="Sts_Ville" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Sts_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Stocke_Sites_Composants">
+          <Key>
+            <PropertyRef Name="Comp_Index" />
+            <PropertyRef Name="Sts_Index" />
+          </Key>
+          <Property Name="Comp_Index" Type="int" Nullable="false" />
+          <Property Name="Sts_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MDR_Types_Paiement">
+          <Key>
+            <PropertyRef Name="TPai_Index" />
+          </Key>
+          <Property Name="TPai_Index" Type="int" Nullable="false" />
+          <Property Name="TPai_Nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TPai_Actif" Type="int" />
+        </EntityType>
+        <EntityType Name="MDR_Validation_Client_Devis">
+          <Key>
+            <PropertyRef Name="Cli_Index" />
+            <PropertyRef Name="Dev_Index" />
+          </Key>
+          <Property Name="Cli_Index" Type="int" Nullable="false" />
+          <Property Name="Dev_Index" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_MDR_Appartient_Modeles_Gammes_MDR_Gammes">
+          <End Role="MDR_Gammes" Type="Self.MDR_Gammes" Multiplicity="1" />
+          <End Role="MDR_Appartient_Modeles_Gammes" Type="Self.MDR_Appartient_Modeles_Gammes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Gammes">
+              <PropertyRef Name="Gam_Index" />
+            </Principal>
+            <Dependent Role="MDR_Appartient_Modeles_Gammes">
+              <PropertyRef Name="Gam_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Appartient_Modeles_Gammes_MDR_Modeles">
+          <End Role="MDR_Modeles" Type="Self.MDR_Modeles" Multiplicity="1" />
+          <End Role="MDR_Appartient_Modeles_Gammes" Type="Self.MDR_Appartient_Modeles_Gammes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Modeles">
+              <PropertyRef Name="Model_Index" />
+            </Principal>
+            <Dependent Role="MDR_Appartient_Modeles_Gammes">
+              <PropertyRef Name="Model_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Appartient_Sites_Fournisseurs_MDR_Fournisseurs">
+          <End Role="MDR_Fournisseurs" Type="Self.MDR_Fournisseurs" Multiplicity="1" />
+          <End Role="MDR_Appartient_Sites_Fournisseurs" Type="Self.MDR_Appartient_Sites_Fournisseurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Fournisseurs">
+              <PropertyRef Name="Four_Index" />
+            </Principal>
+            <Dependent Role="MDR_Appartient_Sites_Fournisseurs">
+              <PropertyRef Name="Four_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Appartient_Sites_Fournisseurs_MDR_Sites">
+          <End Role="MDR_Sites" Type="Self.MDR_Sites" Multiplicity="1" />
+          <End Role="MDR_Appartient_Sites_Fournisseurs" Type="Self.MDR_Appartient_Sites_Fournisseurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Sites">
+              <PropertyRef Name="Sts_Index" />
+            </Principal>
+            <Dependent Role="MDR_Appartient_Sites_Fournisseurs">
+              <PropertyRef Name="Sts_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Avancer_Etat_Paiement_MDR_Etat_Paiement">
+          <End Role="MDR_Etat_Paiement" Type="Self.MDR_Etat_Paiement" Multiplicity="1" />
+          <End Role="MDR_Avancer_Etat_Paiement" Type="Self.MDR_Avancer_Etat_Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Etat_Paiement">
+              <PropertyRef Name="EPai_Index" />
+            </Principal>
+            <Dependent Role="MDR_Avancer_Etat_Paiement">
+              <PropertyRef Name="EPai_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Avancer_Etat_Paiement_MDR_Paiement">
+          <End Role="MDR_Paiement" Type="Self.MDR_Paiement" Multiplicity="1" />
+          <End Role="MDR_Avancer_Etat_Paiement" Type="Self.MDR_Avancer_Etat_Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Paiement">
+              <PropertyRef Name="Pai_Index" />
+            </Principal>
+            <Dependent Role="MDR_Avancer_Etat_Paiement">
+              <PropertyRef Name="Pai_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Choisir_Type_Paiement_MDR_Paiement">
+          <End Role="MDR_Paiement" Type="Self.MDR_Paiement" Multiplicity="1" />
+          <End Role="MDR_Choisir_Type_Paiement" Type="Self.MDR_Choisir_Type_Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Paiement">
+              <PropertyRef Name="Pai_Index" />
+            </Principal>
+            <Dependent Role="MDR_Choisir_Type_Paiement">
+              <PropertyRef Name="Pai_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Choisir_Type_Paiement_MDR_Types_Paiement">
+          <End Role="MDR_Types_Paiement" Type="Self.MDR_Types_Paiement" Multiplicity="1" />
+          <End Role="MDR_Choisir_Type_Paiement" Type="Self.MDR_Choisir_Type_Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Types_Paiement">
+              <PropertyRef Name="TPai_Index" />
+            </Principal>
+            <Dependent Role="MDR_Choisir_Type_Paiement">
+              <PropertyRef Name="TPai_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Commande_Client_Commandes_MDR_Clients">
+          <End Role="MDR_Clients" Type="Self.MDR_Clients" Multiplicity="1" />
+          <End Role="MDR_Commande_Client_Commandes" Type="Self.MDR_Commande_Client_Commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Clients">
+              <PropertyRef Name="Cli_Index" />
+            </Principal>
+            <Dependent Role="MDR_Commande_Client_Commandes">
+              <PropertyRef Name="Cli_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Commande_Client_Commandes_MDR_Commandes">
+          <End Role="MDR_Commandes" Type="Self.MDR_Commandes" Multiplicity="1" />
+          <End Role="MDR_Commande_Client_Commandes" Type="Self.MDR_Commande_Client_Commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Commandes">
+              <PropertyRef Name="Comma_Index" />
+            </Principal>
+            <Dependent Role="MDR_Commande_Client_Commandes">
+              <PropertyRef Name="Comma_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Client_Devis_MDR_Clients">
+          <End Role="MDR_Clients" Type="Self.MDR_Clients" Multiplicity="1" />
+          <End Role="MDR_Contient_Client_Devis" Type="Self.MDR_Contient_Client_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Clients">
+              <PropertyRef Name="Cli_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Client_Devis">
+              <PropertyRef Name="Cli_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Client_Devis_MDR_Devis">
+          <End Role="MDR_Devis" Type="Self.MDR_Devis" Multiplicity="1" />
+          <End Role="MDR_Contient_Client_Devis" Type="Self.MDR_Contient_Client_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Client_Devis">
+              <PropertyRef Name="Dev_Idex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Composants_Devis_MDR_Composants">
+          <End Role="MDR_Composants" Type="Self.MDR_Composants" Multiplicity="1" />
+          <End Role="MDR_Contient_Composants_Devis" Type="Self.MDR_Contient_Composants_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Composants">
+              <PropertyRef Name="Comp_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Composants_Devis">
+              <PropertyRef Name="Comp_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Composants_Devis_MDR_Devis">
+          <End Role="MDR_Devis" Type="Self.MDR_Devis" Multiplicity="1" />
+          <End Role="MDR_Contient_Composants_Devis" Type="Self.MDR_Contient_Composants_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Composants_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Composants_Modules_MDR_Composants">
+          <End Role="MDR_Composants" Type="Self.MDR_Composants" Multiplicity="1" />
+          <End Role="MDR_Contient_Composants_Modules" Type="Self.MDR_Contient_Composants_Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Composants">
+              <PropertyRef Name="Comp_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Composants_Modules">
+              <PropertyRef Name="Comp_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Composants_Modules_MDR_Modules">
+          <End Role="MDR_Modules" Type="Self.MDR_Modules" Multiplicity="1" />
+          <End Role="MDR_Contient_Composants_Modules" Type="Self.MDR_Contient_Composants_Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Modules">
+              <PropertyRef Name="Mod_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Composants_Modules">
+              <PropertyRef Name="Mod_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Modeles_Devis_MDR_Devis">
+          <End Role="MDR_Devis" Type="Self.MDR_Devis" Multiplicity="1" />
+          <End Role="MDR_Contient_Modeles_Devis" Type="Self.MDR_Contient_Modeles_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Modeles_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Modeles_Devis_MDR_Modeles">
+          <End Role="MDR_Modeles" Type="Self.MDR_Modeles" Multiplicity="1" />
+          <End Role="MDR_Contient_Modeles_Devis" Type="Self.MDR_Contient_Modeles_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Modeles">
+              <PropertyRef Name="Model_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Modeles_Devis">
+              <PropertyRef Name="Model_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Modules_Devis_MDR_Devis">
+          <End Role="MDR_Devis" Type="Self.MDR_Devis" Multiplicity="1" />
+          <End Role="MDR_Contient_Modules_Devis" Type="Self.MDR_Contient_Modules_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Modules_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Modules_Devis_MDR_Modules">
+          <End Role="MDR_Modules" Type="Self.MDR_Modules" Multiplicity="1" />
+          <End Role="MDR_Contient_Modules_Devis" Type="Self.MDR_Contient_Modules_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Modules">
+              <PropertyRef Name="Mod_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Modules_Devis">
+              <PropertyRef Name="Mod_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Modules_Modeles_MDR_Modeles">
+          <End Role="MDR_Modeles" Type="Self.MDR_Modeles" Multiplicity="1" />
+          <End Role="MDR_Contient_Modules_Modeles" Type="Self.MDR_Contient_Modules_Modeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Modeles">
+              <PropertyRef Name="Model_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Modules_Modeles">
+              <PropertyRef Name="Model_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Contient_Modules_Modeles_MDR_Modules">
+          <End Role="MDR_Modules" Type="Self.MDR_Modules" Multiplicity="1" />
+          <End Role="MDR_Contient_Modules_Modeles" Type="Self.MDR_Contient_Modules_Modeles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Modules">
+              <PropertyRef Name="Mod_Index" />
+            </Principal>
+            <Dependent Role="MDR_Contient_Modules_Modeles">
+              <PropertyRef Name="Mod_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Creer_Commercial_Devis_MDR_Commerciaux">
+          <End Role="MDR_Commerciaux" Type="Self.MDR_Commerciaux" Multiplicity="1" />
+          <End Role="MDR_Creer_Commercial_Devis" Type="Self.MDR_Creer_Commercial_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Commerciaux">
+              <PropertyRef Name="Com_Index" />
+            </Principal>
+            <Dependent Role="MDR_Creer_Commercial_Devis">
+              <PropertyRef Name="Com_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Creer_Commercial_Devis_MDR_Devis">
+          <End Role="MDR_Devis" Type="Self.MDR_Devis" Multiplicity="1" />
+          <End Role="MDR_Creer_Commercial_Devis" Type="Self.MDR_Creer_Commercial_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Principal>
+            <Dependent Role="MDR_Creer_Commercial_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Fourni_Fournisseur_Composants_MDR_Composants">
+          <End Role="MDR_Composants" Type="Self.MDR_Composants" Multiplicity="1" />
+          <End Role="MDR_Fourni_Fournisseur_Composants" Type="Self.MDR_Fourni_Fournisseur_Composants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Composants">
+              <PropertyRef Name="Comp_Index" />
+            </Principal>
+            <Dependent Role="MDR_Fourni_Fournisseur_Composants">
+              <PropertyRef Name="Comp_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Fourni_Fournisseur_Composants_MDR_Fournisseurs">
+          <End Role="MDR_Fournisseurs" Type="Self.MDR_Fournisseurs" Multiplicity="1" />
+          <End Role="MDR_Fourni_Fournisseur_Composants" Type="Self.MDR_Fourni_Fournisseur_Composants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Fournisseurs">
+              <PropertyRef Name="Four_Index" />
+            </Principal>
+            <Dependent Role="MDR_Fourni_Fournisseur_Composants">
+              <PropertyRef Name="Four_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Payer_Commandes_Paiement_MDR_Commandes">
+          <End Role="MDR_Commandes" Type="Self.MDR_Commandes" Multiplicity="1" />
+          <End Role="MDR_Payer_Commandes_Paiement" Type="Self.MDR_Payer_Commandes_Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Commandes">
+              <PropertyRef Name="Comma_Index" />
+            </Principal>
+            <Dependent Role="MDR_Payer_Commandes_Paiement">
+              <PropertyRef Name="Comma_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Payer_Commandes_Paiement_MDR_Paiement">
+          <End Role="MDR_Paiement" Type="Self.MDR_Paiement" Multiplicity="1" />
+          <End Role="MDR_Payer_Commandes_Paiement" Type="Self.MDR_Payer_Commandes_Paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Paiement">
+              <PropertyRef Name="Pai_Index" />
+            </Principal>
+            <Dependent Role="MDR_Payer_Commandes_Paiement">
+              <PropertyRef Name="Pai_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Stocke_Sites_Composants_MDR_Composants">
+          <End Role="MDR_Composants" Type="Self.MDR_Composants" Multiplicity="1" />
+          <End Role="MDR_Stocke_Sites_Composants" Type="Self.MDR_Stocke_Sites_Composants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Composants">
+              <PropertyRef Name="Comp_Index" />
+            </Principal>
+            <Dependent Role="MDR_Stocke_Sites_Composants">
+              <PropertyRef Name="Comp_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Stocke_Sites_Composants_MDR_Sites">
+          <End Role="MDR_Sites" Type="Self.MDR_Sites" Multiplicity="1" />
+          <End Role="MDR_Stocke_Sites_Composants" Type="Self.MDR_Stocke_Sites_Composants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Sites">
+              <PropertyRef Name="Sts_Index" />
+            </Principal>
+            <Dependent Role="MDR_Stocke_Sites_Composants">
+              <PropertyRef Name="Sts_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Validation_Client_Devis_MDR_Clients">
+          <End Role="MDR_Clients" Type="Self.MDR_Clients" Multiplicity="1" />
+          <End Role="MDR_Validation_Client_Devis" Type="Self.MDR_Validation_Client_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Clients">
+              <PropertyRef Name="Cli_Index" />
+            </Principal>
+            <Dependent Role="MDR_Validation_Client_Devis">
+              <PropertyRef Name="Cli_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MDR_Validation_Client_Devis_MDR_Devis">
+          <End Role="MDR_Devis" Type="Self.MDR_Devis" Multiplicity="1" />
+          <End Role="MDR_Validation_Client_Devis" Type="Self.MDR_Validation_Client_Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MDR_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Principal>
+            <Dependent Role="MDR_Validation_Client_Devis">
+              <PropertyRef Name="Dev_Index" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="MADERA_V1ModelStoreContainer">
+          <EntitySet Name="MDR_Appartient_Modeles_Gammes" EntityType="Self.MDR_Appartient_Modeles_Gammes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Appartient_Sites_Fournisseurs" EntityType="Self.MDR_Appartient_Sites_Fournisseurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Avancer_Etat_Paiement" EntityType="Self.MDR_Avancer_Etat_Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Choisir_Type_Paiement" EntityType="Self.MDR_Choisir_Type_Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Clients" EntityType="Self.MDR_Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Commande_Client_Commandes" EntityType="Self.MDR_Commande_Client_Commandes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Commandes" EntityType="Self.MDR_Commandes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Commerciaux" EntityType="Self.MDR_Commerciaux" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Composants" EntityType="Self.MDR_Composants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Contient_Client_Devis" EntityType="Self.MDR_Contient_Client_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Contient_Composants_Devis" EntityType="Self.MDR_Contient_Composants_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Contient_Composants_Modules" EntityType="Self.MDR_Contient_Composants_Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Contient_Modeles_Devis" EntityType="Self.MDR_Contient_Modeles_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Contient_Modules_Devis" EntityType="Self.MDR_Contient_Modules_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Contient_Modules_Modeles" EntityType="Self.MDR_Contient_Modules_Modeles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Creer_Commercial_Devis" EntityType="Self.MDR_Creer_Commercial_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Devis" EntityType="Self.MDR_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Etat_Paiement" EntityType="Self.MDR_Etat_Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Fourni_Fournisseur_Composants" EntityType="Self.MDR_Fourni_Fournisseur_Composants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Fournisseurs" EntityType="Self.MDR_Fournisseurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Gammes" EntityType="Self.MDR_Gammes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Modeles" EntityType="Self.MDR_Modeles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Modules" EntityType="Self.MDR_Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Paiement" EntityType="Self.MDR_Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Payer_Commandes_Paiement" EntityType="Self.MDR_Payer_Commandes_Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Sites" EntityType="Self.MDR_Sites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Stocke_Sites_Composants" EntityType="Self.MDR_Stocke_Sites_Composants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Types_Paiement" EntityType="Self.MDR_Types_Paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MDR_Validation_Client_Devis" EntityType="Self.MDR_Validation_Client_Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MDR_Appartient_Modeles_Gammes_MDR_Gammes" Association="Self.FK_MDR_Appartient_Modeles_Gammes_MDR_Gammes">
+            <End Role="MDR_Gammes" EntitySet="MDR_Gammes" />
+            <End Role="MDR_Appartient_Modeles_Gammes" EntitySet="MDR_Appartient_Modeles_Gammes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Appartient_Modeles_Gammes_MDR_Modeles" Association="Self.FK_MDR_Appartient_Modeles_Gammes_MDR_Modeles">
+            <End Role="MDR_Modeles" EntitySet="MDR_Modeles" />
+            <End Role="MDR_Appartient_Modeles_Gammes" EntitySet="MDR_Appartient_Modeles_Gammes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Appartient_Sites_Fournisseurs_MDR_Fournisseurs" Association="Self.FK_MDR_Appartient_Sites_Fournisseurs_MDR_Fournisseurs">
+            <End Role="MDR_Fournisseurs" EntitySet="MDR_Fournisseurs" />
+            <End Role="MDR_Appartient_Sites_Fournisseurs" EntitySet="MDR_Appartient_Sites_Fournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Appartient_Sites_Fournisseurs_MDR_Sites" Association="Self.FK_MDR_Appartient_Sites_Fournisseurs_MDR_Sites">
+            <End Role="MDR_Sites" EntitySet="MDR_Sites" />
+            <End Role="MDR_Appartient_Sites_Fournisseurs" EntitySet="MDR_Appartient_Sites_Fournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Avancer_Etat_Paiement_MDR_Etat_Paiement" Association="Self.FK_MDR_Avancer_Etat_Paiement_MDR_Etat_Paiement">
+            <End Role="MDR_Etat_Paiement" EntitySet="MDR_Etat_Paiement" />
+            <End Role="MDR_Avancer_Etat_Paiement" EntitySet="MDR_Avancer_Etat_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Avancer_Etat_Paiement_MDR_Paiement" Association="Self.FK_MDR_Avancer_Etat_Paiement_MDR_Paiement">
+            <End Role="MDR_Paiement" EntitySet="MDR_Paiement" />
+            <End Role="MDR_Avancer_Etat_Paiement" EntitySet="MDR_Avancer_Etat_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Choisir_Type_Paiement_MDR_Paiement" Association="Self.FK_MDR_Choisir_Type_Paiement_MDR_Paiement">
+            <End Role="MDR_Paiement" EntitySet="MDR_Paiement" />
+            <End Role="MDR_Choisir_Type_Paiement" EntitySet="MDR_Choisir_Type_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Choisir_Type_Paiement_MDR_Types_Paiement" Association="Self.FK_MDR_Choisir_Type_Paiement_MDR_Types_Paiement">
+            <End Role="MDR_Types_Paiement" EntitySet="MDR_Types_Paiement" />
+            <End Role="MDR_Choisir_Type_Paiement" EntitySet="MDR_Choisir_Type_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Commande_Client_Commandes_MDR_Clients" Association="Self.FK_MDR_Commande_Client_Commandes_MDR_Clients">
+            <End Role="MDR_Clients" EntitySet="MDR_Clients" />
+            <End Role="MDR_Commande_Client_Commandes" EntitySet="MDR_Commande_Client_Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Commande_Client_Commandes_MDR_Commandes" Association="Self.FK_MDR_Commande_Client_Commandes_MDR_Commandes">
+            <End Role="MDR_Commandes" EntitySet="MDR_Commandes" />
+            <End Role="MDR_Commande_Client_Commandes" EntitySet="MDR_Commande_Client_Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Client_Devis_MDR_Clients" Association="Self.FK_MDR_Contient_Client_Devis_MDR_Clients">
+            <End Role="MDR_Clients" EntitySet="MDR_Clients" />
+            <End Role="MDR_Contient_Client_Devis" EntitySet="MDR_Contient_Client_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Client_Devis_MDR_Devis" Association="Self.FK_MDR_Contient_Client_Devis_MDR_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Contient_Client_Devis" EntitySet="MDR_Contient_Client_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Composants_Devis_MDR_Composants" Association="Self.FK_MDR_Contient_Composants_Devis_MDR_Composants">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Contient_Composants_Devis" EntitySet="MDR_Contient_Composants_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Composants_Devis_MDR_Devis" Association="Self.FK_MDR_Contient_Composants_Devis_MDR_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Contient_Composants_Devis" EntitySet="MDR_Contient_Composants_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Composants_Modules_MDR_Composants" Association="Self.FK_MDR_Contient_Composants_Modules_MDR_Composants">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Contient_Composants_Modules" EntitySet="MDR_Contient_Composants_Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Composants_Modules_MDR_Modules" Association="Self.FK_MDR_Contient_Composants_Modules_MDR_Modules">
+            <End Role="MDR_Modules" EntitySet="MDR_Modules" />
+            <End Role="MDR_Contient_Composants_Modules" EntitySet="MDR_Contient_Composants_Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Modeles_Devis_MDR_Devis" Association="Self.FK_MDR_Contient_Modeles_Devis_MDR_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Contient_Modeles_Devis" EntitySet="MDR_Contient_Modeles_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Modeles_Devis_MDR_Modeles" Association="Self.FK_MDR_Contient_Modeles_Devis_MDR_Modeles">
+            <End Role="MDR_Modeles" EntitySet="MDR_Modeles" />
+            <End Role="MDR_Contient_Modeles_Devis" EntitySet="MDR_Contient_Modeles_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Modules_Devis_MDR_Devis" Association="Self.FK_MDR_Contient_Modules_Devis_MDR_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Contient_Modules_Devis" EntitySet="MDR_Contient_Modules_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Modules_Devis_MDR_Modules" Association="Self.FK_MDR_Contient_Modules_Devis_MDR_Modules">
+            <End Role="MDR_Modules" EntitySet="MDR_Modules" />
+            <End Role="MDR_Contient_Modules_Devis" EntitySet="MDR_Contient_Modules_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Modules_Modeles_MDR_Modeles" Association="Self.FK_MDR_Contient_Modules_Modeles_MDR_Modeles">
+            <End Role="MDR_Modeles" EntitySet="MDR_Modeles" />
+            <End Role="MDR_Contient_Modules_Modeles" EntitySet="MDR_Contient_Modules_Modeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Contient_Modules_Modeles_MDR_Modules" Association="Self.FK_MDR_Contient_Modules_Modeles_MDR_Modules">
+            <End Role="MDR_Modules" EntitySet="MDR_Modules" />
+            <End Role="MDR_Contient_Modules_Modeles" EntitySet="MDR_Contient_Modules_Modeles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Creer_Commercial_Devis_MDR_Commerciaux" Association="Self.FK_MDR_Creer_Commercial_Devis_MDR_Commerciaux">
+            <End Role="MDR_Commerciaux" EntitySet="MDR_Commerciaux" />
+            <End Role="MDR_Creer_Commercial_Devis" EntitySet="MDR_Creer_Commercial_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Creer_Commercial_Devis_MDR_Devis" Association="Self.FK_MDR_Creer_Commercial_Devis_MDR_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Creer_Commercial_Devis" EntitySet="MDR_Creer_Commercial_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Fourni_Fournisseur_Composants_MDR_Composants" Association="Self.FK_MDR_Fourni_Fournisseur_Composants_MDR_Composants">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Fourni_Fournisseur_Composants" EntitySet="MDR_Fourni_Fournisseur_Composants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Fourni_Fournisseur_Composants_MDR_Fournisseurs" Association="Self.FK_MDR_Fourni_Fournisseur_Composants_MDR_Fournisseurs">
+            <End Role="MDR_Fournisseurs" EntitySet="MDR_Fournisseurs" />
+            <End Role="MDR_Fourni_Fournisseur_Composants" EntitySet="MDR_Fourni_Fournisseur_Composants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Payer_Commandes_Paiement_MDR_Commandes" Association="Self.FK_MDR_Payer_Commandes_Paiement_MDR_Commandes">
+            <End Role="MDR_Commandes" EntitySet="MDR_Commandes" />
+            <End Role="MDR_Payer_Commandes_Paiement" EntitySet="MDR_Payer_Commandes_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Payer_Commandes_Paiement_MDR_Paiement" Association="Self.FK_MDR_Payer_Commandes_Paiement_MDR_Paiement">
+            <End Role="MDR_Paiement" EntitySet="MDR_Paiement" />
+            <End Role="MDR_Payer_Commandes_Paiement" EntitySet="MDR_Payer_Commandes_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Stocke_Sites_Composants_MDR_Composants" Association="Self.FK_MDR_Stocke_Sites_Composants_MDR_Composants">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Stocke_Sites_Composants" EntitySet="MDR_Stocke_Sites_Composants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Stocke_Sites_Composants_MDR_Sites" Association="Self.FK_MDR_Stocke_Sites_Composants_MDR_Sites">
+            <End Role="MDR_Sites" EntitySet="MDR_Sites" />
+            <End Role="MDR_Stocke_Sites_Composants" EntitySet="MDR_Stocke_Sites_Composants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Validation_Client_Devis_MDR_Clients" Association="Self.FK_MDR_Validation_Client_Devis_MDR_Clients">
+            <End Role="MDR_Clients" EntitySet="MDR_Clients" />
+            <End Role="MDR_Validation_Client_Devis" EntitySet="MDR_Validation_Client_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MDR_Validation_Client_Devis_MDR_Devis" Association="Self.FK_MDR_Validation_Client_Devis_MDR_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Validation_Client_Devis" EntitySet="MDR_Validation_Client_Devis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MADERA_V1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MADERA_V1Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MADERA_V1Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MADERA_V1Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="MDR_Clients" EntityType="MADERA_V1Model.MDR_Clients" />
+          <EntitySet Name="MDR_Commandes" EntityType="MADERA_V1Model.MDR_Commandes" />
+          <EntitySet Name="MDR_Commerciaux" EntityType="MADERA_V1Model.MDR_Commerciaux" />
+          <EntitySet Name="MDR_Composants" EntityType="MADERA_V1Model.MDR_Composants" />
+          <EntitySet Name="MDR_Devis" EntityType="MADERA_V1Model.MDR_Devis" />
+          <EntitySet Name="MDR_Etat_Paiement" EntityType="MADERA_V1Model.MDR_Etat_Paiement" />
+          <EntitySet Name="MDR_Fournisseurs" EntityType="MADERA_V1Model.MDR_Fournisseurs" />
+          <EntitySet Name="MDR_Gammes" EntityType="MADERA_V1Model.MDR_Gammes" />
+          <EntitySet Name="MDR_Modeles" EntityType="MADERA_V1Model.MDR_Modeles" />
+          <EntitySet Name="MDR_Modules" EntityType="MADERA_V1Model.MDR_Modules" />
+          <EntitySet Name="MDR_Paiement" EntityType="MADERA_V1Model.MDR_Paiement" />
+          <EntitySet Name="MDR_Sites" EntityType="MADERA_V1Model.MDR_Sites" />
+          <EntitySet Name="MDR_Types_Paiement" EntityType="MADERA_V1Model.MDR_Types_Paiement" />
+          <EntitySet Name="sysdiagrams" EntityType="MADERA_V1Model.sysdiagrams" />
+          <AssociationSet Name="MDR_Appartient_Modeles_Gammes" Association="MADERA_V1Model.MDR_Appartient_Modeles_Gammes">
+            <End Role="MDR_Gammes" EntitySet="MDR_Gammes" />
+            <End Role="MDR_Modeles" EntitySet="MDR_Modeles" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Appartient_Sites_Fournisseurs" Association="MADERA_V1Model.MDR_Appartient_Sites_Fournisseurs">
+            <End Role="MDR_Fournisseurs" EntitySet="MDR_Fournisseurs" />
+            <End Role="MDR_Sites" EntitySet="MDR_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Avancer_Etat_Paiement" Association="MADERA_V1Model.MDR_Avancer_Etat_Paiement">
+            <End Role="MDR_Etat_Paiement" EntitySet="MDR_Etat_Paiement" />
+            <End Role="MDR_Paiement" EntitySet="MDR_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Choisir_Type_Paiement" Association="MADERA_V1Model.MDR_Choisir_Type_Paiement">
+            <End Role="MDR_Paiement" EntitySet="MDR_Paiement" />
+            <End Role="MDR_Types_Paiement" EntitySet="MDR_Types_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Commande_Client_Commandes" Association="MADERA_V1Model.MDR_Commande_Client_Commandes">
+            <End Role="MDR_Clients" EntitySet="MDR_Clients" />
+            <End Role="MDR_Commandes" EntitySet="MDR_Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Contient_Client_Devis" Association="MADERA_V1Model.MDR_Contient_Client_Devis">
+            <End Role="MDR_Clients" EntitySet="MDR_Clients" />
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Contient_Composants_Devis" Association="MADERA_V1Model.MDR_Contient_Composants_Devis">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Contient_Composants_Modules" Association="MADERA_V1Model.MDR_Contient_Composants_Modules">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Modules" EntitySet="MDR_Modules" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Contient_Modeles_Devis" Association="MADERA_V1Model.MDR_Contient_Modeles_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Modeles" EntitySet="MDR_Modeles" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Contient_Modules_Devis" Association="MADERA_V1Model.MDR_Contient_Modules_Devis">
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+            <End Role="MDR_Modules" EntitySet="MDR_Modules" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Contient_Modules_Modeles" Association="MADERA_V1Model.MDR_Contient_Modules_Modeles">
+            <End Role="MDR_Modeles" EntitySet="MDR_Modeles" />
+            <End Role="MDR_Modules" EntitySet="MDR_Modules" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Creer_Commercial_Devis" Association="MADERA_V1Model.MDR_Creer_Commercial_Devis">
+            <End Role="MDR_Commerciaux" EntitySet="MDR_Commerciaux" />
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Fourni_Fournisseur_Composants" Association="MADERA_V1Model.MDR_Fourni_Fournisseur_Composants">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Fournisseurs" EntitySet="MDR_Fournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Payer_Commandes_Paiement" Association="MADERA_V1Model.MDR_Payer_Commandes_Paiement">
+            <End Role="MDR_Commandes" EntitySet="MDR_Commandes" />
+            <End Role="MDR_Paiement" EntitySet="MDR_Paiement" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Stocke_Sites_Composants" Association="MADERA_V1Model.MDR_Stocke_Sites_Composants">
+            <End Role="MDR_Composants" EntitySet="MDR_Composants" />
+            <End Role="MDR_Sites" EntitySet="MDR_Sites" />
+          </AssociationSet>
+          <AssociationSet Name="MDR_Validation_Client_Devis" Association="MADERA_V1Model.MDR_Validation_Client_Devis">
+            <End Role="MDR_Clients" EntitySet="MDR_Clients" />
+            <End Role="MDR_Devis" EntitySet="MDR_Devis" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="MDR_Clients">
+          <Key>
+            <PropertyRef Name="Cli_Index" />
+          </Key>
+          <Property Name="Cli_Index" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cli_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_Prenom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_Adresse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_Age" Type="Int32" />
+          <Property Name="Cli_Ville" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_CP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cli_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Commandes" Relationship="MADERA_V1Model.MDR_Commande_Client_Commandes" FromRole="MDR_Clients" ToRole="MDR_Commandes" />
+          <NavigationProperty Name="MDR_Devis" Relationship="MADERA_V1Model.MDR_Contient_Client_Devis" FromRole="MDR_Clients" ToRole="MDR_Devis" />
+          <NavigationProperty Name="MDR_Devis1" Relationship="MADERA_V1Model.MDR_Validation_Client_Devis" FromRole="MDR_Clients" ToRole="MDR_Devis" />
+        </EntityType>
+        <EntityType Name="MDR_Commandes">
+          <Key>
+            <PropertyRef Name="Comma_Index" />
+          </Key>
+          <Property Name="Comma_Index" Type="Int32" Nullable="false" />
+          <Property Name="Comma_Prix" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="Comma_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Clients" Relationship="MADERA_V1Model.MDR_Commande_Client_Commandes" FromRole="MDR_Commandes" ToRole="MDR_Clients" />
+          <NavigationProperty Name="MDR_Paiement" Relationship="MADERA_V1Model.MDR_Payer_Commandes_Paiement" FromRole="MDR_Commandes" ToRole="MDR_Paiement" />
+        </EntityType>
+        <EntityType Name="MDR_Commerciaux">
+          <Key>
+            <PropertyRef Name="Com_Index" />
+          </Key>
+          <Property Name="Com_Index" Type="Int32" Nullable="false" />
+          <Property Name="Com_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Com_Identifiant" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Com_Mdp" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Com_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Devis" Relationship="MADERA_V1Model.MDR_Creer_Commercial_Devis" FromRole="MDR_Commerciaux" ToRole="MDR_Devis" />
+        </EntityType>
+        <EntityType Name="MDR_Composants">
+          <Key>
+            <PropertyRef Name="Comp_Index" />
+          </Key>
+          <Property Name="Comp_Index" Type="Int32" Nullable="false" />
+          <Property Name="Comp_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comp_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comp_Couleur" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comp_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Devis" Relationship="MADERA_V1Model.MDR_Contient_Composants_Devis" FromRole="MDR_Composants" ToRole="MDR_Devis" />
+          <NavigationProperty Name="MDR_Modules" Relationship="MADERA_V1Model.MDR_Contient_Composants_Modules" FromRole="MDR_Composants" ToRole="MDR_Modules" />
+          <NavigationProperty Name="MDR_Fournisseurs" Relationship="MADERA_V1Model.MDR_Fourni_Fournisseur_Composants" FromRole="MDR_Composants" ToRole="MDR_Fournisseurs" />
+          <NavigationProperty Name="MDR_Sites" Relationship="MADERA_V1Model.MDR_Stocke_Sites_Composants" FromRole="MDR_Composants" ToRole="MDR_Sites" />
+        </EntityType>
+        <EntityType Name="MDR_Devis">
+          <Key>
+            <PropertyRef Name="Dev_Index" />
+          </Key>
+          <Property Name="Dev_Index" Type="Int32" Nullable="false" />
+          <Property Name="Dev_Prix" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Dev_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Clients" Relationship="MADERA_V1Model.MDR_Contient_Client_Devis" FromRole="MDR_Devis" ToRole="MDR_Clients" />
+          <NavigationProperty Name="MDR_Composants" Relationship="MADERA_V1Model.MDR_Contient_Composants_Devis" FromRole="MDR_Devis" ToRole="MDR_Composants" />
+          <NavigationProperty Name="MDR_Modeles" Relationship="MADERA_V1Model.MDR_Contient_Modeles_Devis" FromRole="MDR_Devis" ToRole="MDR_Modeles" />
+          <NavigationProperty Name="MDR_Modules" Relationship="MADERA_V1Model.MDR_Contient_Modules_Devis" FromRole="MDR_Devis" ToRole="MDR_Modules" />
+          <NavigationProperty Name="MDR_Commerciaux" Relationship="MADERA_V1Model.MDR_Creer_Commercial_Devis" FromRole="MDR_Devis" ToRole="MDR_Commerciaux" />
+          <NavigationProperty Name="MDR_Clients1" Relationship="MADERA_V1Model.MDR_Validation_Client_Devis" FromRole="MDR_Devis" ToRole="MDR_Clients" />
+        </EntityType>
+        <EntityType Name="MDR_Etat_Paiement">
+          <Key>
+            <PropertyRef Name="EPai_Index" />
+          </Key>
+          <Property Name="EPai_Index" Type="Int32" Nullable="false" />
+          <Property Name="EPai_Etat" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EPai_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EPai_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Paiement" Relationship="MADERA_V1Model.MDR_Avancer_Etat_Paiement" FromRole="MDR_Etat_Paiement" ToRole="MDR_Paiement" />
+        </EntityType>
+        <EntityType Name="MDR_Fournisseurs">
+          <Key>
+            <PropertyRef Name="Four_Index" />
+          </Key>
+          <Property Name="Four_Index" Type="Int32" Nullable="false" />
+          <Property Name="Four_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Four_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Sites" Relationship="MADERA_V1Model.MDR_Appartient_Sites_Fournisseurs" FromRole="MDR_Fournisseurs" ToRole="MDR_Sites" />
+          <NavigationProperty Name="MDR_Composants" Relationship="MADERA_V1Model.MDR_Fourni_Fournisseur_Composants" FromRole="MDR_Fournisseurs" ToRole="MDR_Composants" />
+        </EntityType>
+        <EntityType Name="MDR_Gammes">
+          <Key>
+            <PropertyRef Name="Gam_Index" />
+          </Key>
+          <Property Name="Gam_Index" Type="Int32" Nullable="false" />
+          <Property Name="Gam_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gam_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Modeles" Relationship="MADERA_V1Model.MDR_Appartient_Modeles_Gammes" FromRole="MDR_Gammes" ToRole="MDR_Modeles" />
+        </EntityType>
+        <EntityType Name="MDR_Modeles">
+          <Key>
+            <PropertyRef Name="Model_Index" />
+          </Key>
+          <Property Name="Model_Index" Type="Int32" Nullable="false" />
+          <Property Name="Model_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Model_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Gammes" Relationship="MADERA_V1Model.MDR_Appartient_Modeles_Gammes" FromRole="MDR_Modeles" ToRole="MDR_Gammes" />
+          <NavigationProperty Name="MDR_Devis" Relationship="MADERA_V1Model.MDR_Contient_Modeles_Devis" FromRole="MDR_Modeles" ToRole="MDR_Devis" />
+          <NavigationProperty Name="MDR_Modules" Relationship="MADERA_V1Model.MDR_Contient_Modules_Modeles" FromRole="MDR_Modeles" ToRole="MDR_Modules" />
+        </EntityType>
+        <EntityType Name="MDR_Modules">
+          <Key>
+            <PropertyRef Name="Mod_Index" />
+          </Key>
+          <Property Name="Mod_Index" Type="Int32" Nullable="false" />
+          <Property Name="Mod_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Mod_Prix" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Mod_Date" Type="DateTime" Precision="3" />
+          <Property Name="Mod_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Composants" Relationship="MADERA_V1Model.MDR_Contient_Composants_Modules" FromRole="MDR_Modules" ToRole="MDR_Composants" />
+          <NavigationProperty Name="MDR_Devis" Relationship="MADERA_V1Model.MDR_Contient_Modules_Devis" FromRole="MDR_Modules" ToRole="MDR_Devis" />
+          <NavigationProperty Name="MDR_Modeles" Relationship="MADERA_V1Model.MDR_Contient_Modules_Modeles" FromRole="MDR_Modules" ToRole="MDR_Modeles" />
+        </EntityType>
+        <EntityType Name="MDR_Paiement">
+          <Key>
+            <PropertyRef Name="Pai_Index" />
+          </Key>
+          <Property Name="Pai_Index" Type="Int32" Nullable="false" />
+          <Property Name="Pai_Type" Type="Int32" Nullable="false" />
+          <Property Name="Pai_Etat" Type="Int32" Nullable="false" />
+          <Property Name="Pai_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Etat_Paiement" Relationship="MADERA_V1Model.MDR_Avancer_Etat_Paiement" FromRole="MDR_Paiement" ToRole="MDR_Etat_Paiement" />
+          <NavigationProperty Name="MDR_Types_Paiement" Relationship="MADERA_V1Model.MDR_Choisir_Type_Paiement" FromRole="MDR_Paiement" ToRole="MDR_Types_Paiement" />
+          <NavigationProperty Name="MDR_Commandes" Relationship="MADERA_V1Model.MDR_Payer_Commandes_Paiement" FromRole="MDR_Paiement" ToRole="MDR_Commandes" />
+        </EntityType>
+        <EntityType Name="MDR_Sites">
+          <Key>
+            <PropertyRef Name="Sts_Index" />
+          </Key>
+          <Property Name="Sts_Index" Type="Int32" Nullable="false" />
+          <Property Name="Sts_Ville" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sts_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Fournisseurs" Relationship="MADERA_V1Model.MDR_Appartient_Sites_Fournisseurs" FromRole="MDR_Sites" ToRole="MDR_Fournisseurs" />
+          <NavigationProperty Name="MDR_Composants" Relationship="MADERA_V1Model.MDR_Stocke_Sites_Composants" FromRole="MDR_Sites" ToRole="MDR_Composants" />
+        </EntityType>
+        <EntityType Name="MDR_Types_Paiement">
+          <Key>
+            <PropertyRef Name="TPai_Index" />
+          </Key>
+          <Property Name="TPai_Index" Type="Int32" Nullable="false" />
+          <Property Name="TPai_Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TPai_Actif" Type="Int32" />
+          <NavigationProperty Name="MDR_Paiement" Relationship="MADERA_V1Model.MDR_Choisir_Type_Paiement" FromRole="MDR_Types_Paiement" ToRole="MDR_Paiement" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="MDR_Appartient_Modeles_Gammes">
+          <End Type="MADERA_V1Model.MDR_Gammes" Role="MDR_Gammes" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Modeles" Role="MDR_Modeles" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Appartient_Sites_Fournisseurs">
+          <End Type="MADERA_V1Model.MDR_Fournisseurs" Role="MDR_Fournisseurs" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Sites" Role="MDR_Sites" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Avancer_Etat_Paiement">
+          <End Type="MADERA_V1Model.MDR_Etat_Paiement" Role="MDR_Etat_Paiement" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Paiement" Role="MDR_Paiement" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Choisir_Type_Paiement">
+          <End Type="MADERA_V1Model.MDR_Paiement" Role="MDR_Paiement" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Types_Paiement" Role="MDR_Types_Paiement" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Commande_Client_Commandes">
+          <End Type="MADERA_V1Model.MDR_Clients" Role="MDR_Clients" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Commandes" Role="MDR_Commandes" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Contient_Client_Devis">
+          <End Type="MADERA_V1Model.MDR_Clients" Role="MDR_Clients" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Devis" Role="MDR_Devis" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Contient_Composants_Devis">
+          <End Type="MADERA_V1Model.MDR_Composants" Role="MDR_Composants" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Devis" Role="MDR_Devis" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Contient_Composants_Modules">
+          <End Type="MADERA_V1Model.MDR_Composants" Role="MDR_Composants" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Modules" Role="MDR_Modules" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Contient_Modeles_Devis">
+          <End Type="MADERA_V1Model.MDR_Devis" Role="MDR_Devis" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Modeles" Role="MDR_Modeles" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Contient_Modules_Devis">
+          <End Type="MADERA_V1Model.MDR_Devis" Role="MDR_Devis" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Modules" Role="MDR_Modules" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Contient_Modules_Modeles">
+          <End Type="MADERA_V1Model.MDR_Modeles" Role="MDR_Modeles" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Modules" Role="MDR_Modules" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Creer_Commercial_Devis">
+          <End Type="MADERA_V1Model.MDR_Commerciaux" Role="MDR_Commerciaux" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Devis" Role="MDR_Devis" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Fourni_Fournisseur_Composants">
+          <End Type="MADERA_V1Model.MDR_Composants" Role="MDR_Composants" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Fournisseurs" Role="MDR_Fournisseurs" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Payer_Commandes_Paiement">
+          <End Type="MADERA_V1Model.MDR_Commandes" Role="MDR_Commandes" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Paiement" Role="MDR_Paiement" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Stocke_Sites_Composants">
+          <End Type="MADERA_V1Model.MDR_Composants" Role="MDR_Composants" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Sites" Role="MDR_Sites" Multiplicity="*" />
+        </Association>
+        <Association Name="MDR_Validation_Client_Devis">
+          <End Type="MADERA_V1Model.MDR_Clients" Role="MDR_Clients" Multiplicity="*" />
+          <End Type="MADERA_V1Model.MDR_Devis" Role="MDR_Devis" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MADERA_V1ModelStoreContainer" CdmEntityContainer="MADERA_V1Entities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MADERA_V1Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MADERA_V1Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MADERA_V1Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MADERA_V1Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MADERA_V1Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MADERA_V1Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MADERA_V1Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MADERA_V1Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MADERA_V1Model.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="MDR_Clients">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Clients">
+              <MappingFragment StoreEntitySet="MDR_Clients">
+                <ScalarProperty Name="Cli_Actif" ColumnName="Cli_Actif" />
+                <ScalarProperty Name="Cli_CP" ColumnName="Cli_CP" />
+                <ScalarProperty Name="Cli_Ville" ColumnName="Cli_Ville" />
+                <ScalarProperty Name="Cli_Age" ColumnName="Cli_Age" />
+                <ScalarProperty Name="Cli_Phone" ColumnName="Cli_Phone" />
+                <ScalarProperty Name="Cli_Email" ColumnName="Cli_Email" />
+                <ScalarProperty Name="Cli_Adresse" ColumnName="Cli_Adresse" />
+                <ScalarProperty Name="Cli_Prenom" ColumnName="Cli_Prenom" />
+                <ScalarProperty Name="Cli_Nom" ColumnName="Cli_Nom" />
+                <ScalarProperty Name="Cli_Index" ColumnName="Cli_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Commandes">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Commandes">
+              <MappingFragment StoreEntitySet="MDR_Commandes">
+                <ScalarProperty Name="Comma_Actif" ColumnName="Comma_Actif" />
+                <ScalarProperty Name="Comma_Prix" ColumnName="Comma_Prix" />
+                <ScalarProperty Name="Comma_Index" ColumnName="Comma_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Commerciaux">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Commerciaux">
+              <MappingFragment StoreEntitySet="MDR_Commerciaux">
+                <ScalarProperty Name="Com_Actif" ColumnName="Com_Actif" />
+                <ScalarProperty Name="Com_Mdp" ColumnName="Com_Mdp" />
+                <ScalarProperty Name="Com_Identifiant" ColumnName="Com_Identifiant" />
+                <ScalarProperty Name="Com_Nom" ColumnName="Com_Nom" />
+                <ScalarProperty Name="Com_Index" ColumnName="Com_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Composants">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Composants">
+              <MappingFragment StoreEntitySet="MDR_Composants">
+                <ScalarProperty Name="Comp_Actif" ColumnName="Comp_Actif" />
+                <ScalarProperty Name="Comp_Couleur" ColumnName="Comp_Couleur" />
+                <ScalarProperty Name="Comp_Type" ColumnName="Comp_Type" />
+                <ScalarProperty Name="Comp_Nom" ColumnName="Comp_Nom" />
+                <ScalarProperty Name="Comp_Index" ColumnName="Comp_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Devis">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Devis">
+              <MappingFragment StoreEntitySet="MDR_Devis">
+                <ScalarProperty Name="Dev_Actif" ColumnName="Dev_Actif" />
+                <ScalarProperty Name="Dev_Prix" ColumnName="Dev_Prix" />
+                <ScalarProperty Name="Dev_Index" ColumnName="Dev_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Etat_Paiement">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Etat_Paiement">
+              <MappingFragment StoreEntitySet="MDR_Etat_Paiement">
+                <ScalarProperty Name="EPai_Actif" ColumnName="EPai_Actif" />
+                <ScalarProperty Name="EPai_Date" ColumnName="EPai_Date" />
+                <ScalarProperty Name="EPai_Etat" ColumnName="EPai_Etat" />
+                <ScalarProperty Name="EPai_Index" ColumnName="EPai_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Fournisseurs">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Fournisseurs">
+              <MappingFragment StoreEntitySet="MDR_Fournisseurs">
+                <ScalarProperty Name="Four_Actif" ColumnName="Four_Actif" />
+                <ScalarProperty Name="Four_Nom" ColumnName="Four_Nom" />
+                <ScalarProperty Name="Four_Index" ColumnName="Four_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Gammes">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Gammes">
+              <MappingFragment StoreEntitySet="MDR_Gammes">
+                <ScalarProperty Name="Gam_Actif" ColumnName="Gam_Actif" />
+                <ScalarProperty Name="Gam_Nom" ColumnName="Gam_Nom" />
+                <ScalarProperty Name="Gam_Index" ColumnName="Gam_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Modeles">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Modeles">
+              <MappingFragment StoreEntitySet="MDR_Modeles">
+                <ScalarProperty Name="Model_Actif" ColumnName="Model_Actif" />
+                <ScalarProperty Name="Model_Nom" ColumnName="Model_Nom" />
+                <ScalarProperty Name="Model_Index" ColumnName="Model_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Modules">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Modules">
+              <MappingFragment StoreEntitySet="MDR_Modules">
+                <ScalarProperty Name="Mod_Actif" ColumnName="Mod_Actif" />
+                <ScalarProperty Name="Mod_Date" ColumnName="Mod_Date" />
+                <ScalarProperty Name="Mod_Prix" ColumnName="Mod_Prix" />
+                <ScalarProperty Name="Mod_Nom" ColumnName="Mod_Nom" />
+                <ScalarProperty Name="Mod_Index" ColumnName="Mod_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Paiement">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Paiement">
+              <MappingFragment StoreEntitySet="MDR_Paiement">
+                <ScalarProperty Name="Pai_Actif" ColumnName="Pai_Actif" />
+                <ScalarProperty Name="Pai_Etat" ColumnName="Pai_Etat" />
+                <ScalarProperty Name="Pai_Type" ColumnName="Pai_Type" />
+                <ScalarProperty Name="Pai_Index" ColumnName="Pai_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Sites">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Sites">
+              <MappingFragment StoreEntitySet="MDR_Sites">
+                <ScalarProperty Name="Sts_Actif" ColumnName="Sts_Actif" />
+                <ScalarProperty Name="Sts_Ville" ColumnName="Sts_Ville" />
+                <ScalarProperty Name="Sts_Index" ColumnName="Sts_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MDR_Types_Paiement">
+            <EntityTypeMapping TypeName="MADERA_V1Model.MDR_Types_Paiement">
+              <MappingFragment StoreEntitySet="MDR_Types_Paiement">
+                <ScalarProperty Name="TPai_Actif" ColumnName="TPai_Actif" />
+                <ScalarProperty Name="TPai_Nom" ColumnName="TPai_Nom" />
+                <ScalarProperty Name="TPai_Index" ColumnName="TPai_Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MADERA_V1Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="MDR_Appartient_Modeles_Gammes" TypeName="MADERA_V1Model.MDR_Appartient_Modeles_Gammes" StoreEntitySet="MDR_Appartient_Modeles_Gammes">
+            <EndProperty Name="MDR_Modeles">
+              <ScalarProperty Name="Model_Index" ColumnName="Model_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Gammes">
+              <ScalarProperty Name="Gam_Index" ColumnName="Gam_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Appartient_Sites_Fournisseurs" TypeName="MADERA_V1Model.MDR_Appartient_Sites_Fournisseurs" StoreEntitySet="MDR_Appartient_Sites_Fournisseurs">
+            <EndProperty Name="MDR_Sites">
+              <ScalarProperty Name="Sts_Index" ColumnName="Sts_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Fournisseurs">
+              <ScalarProperty Name="Four_Index" ColumnName="Four_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Avancer_Etat_Paiement" TypeName="MADERA_V1Model.MDR_Avancer_Etat_Paiement" StoreEntitySet="MDR_Avancer_Etat_Paiement">
+            <EndProperty Name="MDR_Paiement">
+              <ScalarProperty Name="Pai_Index" ColumnName="Pai_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Etat_Paiement">
+              <ScalarProperty Name="EPai_Index" ColumnName="EPai_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Choisir_Type_Paiement" TypeName="MADERA_V1Model.MDR_Choisir_Type_Paiement" StoreEntitySet="MDR_Choisir_Type_Paiement">
+            <EndProperty Name="MDR_Types_Paiement">
+              <ScalarProperty Name="TPai_Index" ColumnName="TPai_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Paiement">
+              <ScalarProperty Name="Pai_Index" ColumnName="Pai_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Commande_Client_Commandes" TypeName="MADERA_V1Model.MDR_Commande_Client_Commandes" StoreEntitySet="MDR_Commande_Client_Commandes">
+            <EndProperty Name="MDR_Commandes">
+              <ScalarProperty Name="Comma_Index" ColumnName="Comma_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Clients">
+              <ScalarProperty Name="Cli_Index" ColumnName="Cli_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Contient_Client_Devis" TypeName="MADERA_V1Model.MDR_Contient_Client_Devis" StoreEntitySet="MDR_Contient_Client_Devis">
+            <EndProperty Name="MDR_Devis">
+              <ScalarProperty Name="Dev_Index" ColumnName="Dev_Idex" />
+            </EndProperty>
+            <EndProperty Name="MDR_Clients">
+              <ScalarProperty Name="Cli_Index" ColumnName="Cli_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Contient_Composants_Devis" TypeName="MADERA_V1Model.MDR_Contient_Composants_Devis" StoreEntitySet="MDR_Contient_Composants_Devis">
+            <EndProperty Name="MDR_Devis">
+              <ScalarProperty Name="Dev_Index" ColumnName="Dev_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Composants">
+              <ScalarProperty Name="Comp_Index" ColumnName="Comp_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Contient_Composants_Modules" TypeName="MADERA_V1Model.MDR_Contient_Composants_Modules" StoreEntitySet="MDR_Contient_Composants_Modules">
+            <EndProperty Name="MDR_Modules">
+              <ScalarProperty Name="Mod_Index" ColumnName="Mod_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Composants">
+              <ScalarProperty Name="Comp_Index" ColumnName="Comp_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Contient_Modeles_Devis" TypeName="MADERA_V1Model.MDR_Contient_Modeles_Devis" StoreEntitySet="MDR_Contient_Modeles_Devis">
+            <EndProperty Name="MDR_Modeles">
+              <ScalarProperty Name="Model_Index" ColumnName="Model_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Devis">
+              <ScalarProperty Name="Dev_Index" ColumnName="Dev_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Contient_Modules_Devis" TypeName="MADERA_V1Model.MDR_Contient_Modules_Devis" StoreEntitySet="MDR_Contient_Modules_Devis">
+            <EndProperty Name="MDR_Modules">
+              <ScalarProperty Name="Mod_Index" ColumnName="Mod_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Devis">
+              <ScalarProperty Name="Dev_Index" ColumnName="Dev_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Contient_Modules_Modeles" TypeName="MADERA_V1Model.MDR_Contient_Modules_Modeles" StoreEntitySet="MDR_Contient_Modules_Modeles">
+            <EndProperty Name="MDR_Modules">
+              <ScalarProperty Name="Mod_Index" ColumnName="Mod_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Modeles">
+              <ScalarProperty Name="Model_Index" ColumnName="Model_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Creer_Commercial_Devis" TypeName="MADERA_V1Model.MDR_Creer_Commercial_Devis" StoreEntitySet="MDR_Creer_Commercial_Devis">
+            <EndProperty Name="MDR_Devis">
+              <ScalarProperty Name="Dev_Index" ColumnName="Dev_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Commerciaux">
+              <ScalarProperty Name="Com_Index" ColumnName="Com_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Fourni_Fournisseur_Composants" TypeName="MADERA_V1Model.MDR_Fourni_Fournisseur_Composants" StoreEntitySet="MDR_Fourni_Fournisseur_Composants">
+            <EndProperty Name="MDR_Fournisseurs">
+              <ScalarProperty Name="Four_Index" ColumnName="Four_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Composants">
+              <ScalarProperty Name="Comp_Index" ColumnName="Comp_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Payer_Commandes_Paiement" TypeName="MADERA_V1Model.MDR_Payer_Commandes_Paiement" StoreEntitySet="MDR_Payer_Commandes_Paiement">
+            <EndProperty Name="MDR_Paiement">
+              <ScalarProperty Name="Pai_Index" ColumnName="Pai_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Commandes">
+              <ScalarProperty Name="Comma_Index" ColumnName="Comma_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Stocke_Sites_Composants" TypeName="MADERA_V1Model.MDR_Stocke_Sites_Composants" StoreEntitySet="MDR_Stocke_Sites_Composants">
+            <EndProperty Name="MDR_Sites">
+              <ScalarProperty Name="Sts_Index" ColumnName="Sts_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Composants">
+              <ScalarProperty Name="Comp_Index" ColumnName="Comp_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MDR_Validation_Client_Devis" TypeName="MADERA_V1Model.MDR_Validation_Client_Devis" StoreEntitySet="MDR_Validation_Client_Devis">
+            <EndProperty Name="MDR_Devis">
+              <ScalarProperty Name="Dev_Index" ColumnName="Dev_Index" />
+            </EndProperty>
+            <EndProperty Name="MDR_Clients">
+              <ScalarProperty Name="Cli_Index" ColumnName="Cli_Index" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

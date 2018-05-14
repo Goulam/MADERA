@@ -1,0 +1,77 @@
+﻿<Window x:Class="Madera.Connexion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Madera"
+        mc:Ignorable="d"
+        Title="Connexion" 
+        Width="900"
+        Height="900" FontFamily="Segoe UI Light"
+        Background="#F5FAFA"
+        Icon="C:/IDE/Workspace/Madera/Madera/Madera/image/madera.png">
+    <Grid Name="FirstConnection" Visibility="Visible">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="69*" />
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="109*" />
+        </Grid.RowDefinitions>
+
+
+        <Image x:Name="imgAccueil" 
+               Grid.Column="4" 
+               Grid.Row="1" 
+               Grid.RowSpan="3" 
+               Grid.ColumnSpan="2"    
+               Source="C:/IDE/Workspace/Madera/Madera/Madera/image/madera.png"/>
+
+        <TextBlock x:Name="textId" 
+                   Grid.Column="4" 
+                   Grid.Row="4" 
+                   Grid.ColumnSpan="2" 
+                   VerticalAlignment="Top" 
+                   FontFamily="Segoe UI Light" 
+                   FontSize="16" Margin="10.177,10,10.176,0" HorizontalAlignment="Center">
+            Entrez votre identifiant :
+        </TextBlock>
+
+        <TextBox x:Name="inputId" 
+                 Grid.Column="3" 
+                 Grid.Row="4" 
+                 Grid.ColumnSpan="4"
+                 Width="auto" 
+                 Background="#FFC1DAD6"
+                 BorderThickness="1" BorderBrush="#6D929B" Margin="0,36.28,0,42.553" Padding="0,3,0,0" Foreground="#666633" FontWeight="ExtraBold" FontSize="16"/>
+        <TextBlock x:Name="textMdp" 
+            Grid.Column="4" 
+            Grid.Row="5" 
+            Grid.ColumnSpan="2" 
+            VerticalAlignment="Top" 
+            FontFamily="Segoe UI Light" 
+            FontSize="16" Margin="-4.125,10,-4.125,0" HorizontalAlignment="Center"><Run Text="Entrez votre "/><Run Text="mot de passe "/><Run Text=" :"/></TextBlock>
+        <Button x:Name="button" Content="Valider" Grid.Column="6" Grid.Row="6" Height="43.248" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Se connecter" ClickMode="Press" Click="OnClickValidate"/>
+        <Button x:Name="button_Copy" Content="Mot de Passe oublié ?" Grid.Column="2" Grid.Row="6" Height="43.248" VerticalAlignment="Top" Grid.ColumnSpan="2" Background="#FFB6BBBF" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Cliquer ici si vous avez oublié votre mot de passe" Margin="0,65.585,0,0"/>
+        <TextBlock x:Name="errorText" Grid.ColumnSpan="4" Grid.Column="3" Height="29.533" Margin="0,-10,10,0" Grid.Row="6" TextWrapping="Wrap" Text="Identifiants Incorrect" VerticalAlignment="Top" Foreground="Red" FontSize="24" HorizontalAlignment="Center" Visibility="Hidden"/>
+        <PasswordBox x:Name="passwordBox" Grid.ColumnSpan="4" Grid.Column="3" Grid.Row="5" Margin="0,36.28,0,42.301" Background="#C1DAD6" BorderThickness="1" BorderBrush="#6D929B" Padding="0,5,0,0" Foreground="#666633" FontWeight="ExtraBold" />
+
+    </Grid>
+</Window>
