@@ -129,10 +129,26 @@
     <Resource Include="folder_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="madera.png" />
+    <Resource Include="madera.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\background.png" />
+    <Resource Include="image\icone\arrow right.png" />
+    <Resource Include="image\icone\check.png" />
+    <Resource Include="image\icone\checked.png" />
+    <Resource Include="image\icone\error.png" />
+    <Resource Include="image\icone\folder_add.png" />
+    <Resource Include="image\icone\folder_search.png" />
+    <Resource Include="image\icone\home.png" />
+    <Resource Include="image\icone\madera.ico" />
+    <Resource Include="image\icone\user_add.png" />
+    <Resource Include="image\icone\user_search.png" />
+    <Resource Include="image\madera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

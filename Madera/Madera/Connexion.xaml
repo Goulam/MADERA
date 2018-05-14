@@ -9,7 +9,7 @@
         Width="900"
         Height="900" FontFamily="Segoe UI Light"
         Background="#F5FAFA"
-        Icon="C:/IDE/Workspace/Madera/Madera/Madera/image/madera.png">
+        Icon="image/madera.png">
     <Grid Name="FirstConnection" Visibility="Visible">
 
         <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
                Grid.Row="1" 
                Grid.RowSpan="3" 
                Grid.ColumnSpan="2"    
-               Source="C:/IDE/Workspace/Madera/Madera/Madera/image/madera.png"/>
+               Source="image/madera.png"/>
 
         <TextBlock x:Name="textId" 
                    Grid.Column="4" 
