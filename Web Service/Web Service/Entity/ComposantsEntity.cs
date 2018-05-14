@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Web_Service.Entity
+namespace Madera.ClassLibrary.Entity
 {
     public class ComposantsEntity
     {

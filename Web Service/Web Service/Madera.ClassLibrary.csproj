@@ -53,9 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\GammesController.cs" />
-    <Compile Include="Controller\ClientController.cs" />
-    <Compile Include="Controller\CommerciauxController.cs" />
+    <Compile Include="BLL\GammesBLL.cs" />
+    <Compile Include="BLL\ClientBLL.cs" />
+    <Compile Include="BLL\CommerciauxBLL.cs" />
     <Compile Include="Entity\ClientEntity.cs" />
     <Compile Include="Entity\CommandesEntity.cs" />
     <Compile Include="Entity\CommerciauxEntity.cs" />
