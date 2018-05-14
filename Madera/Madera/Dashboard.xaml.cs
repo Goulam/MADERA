@@ -21,17 +21,47 @@ namespace Madera
     /// </summary>
     public partial class Dashboard : Window
     {
+        //
+        // Variable de "session"  
+        //
+
         CommerciauxEntity commercial;
         GammesEntity gammesDevis = new GammesEntity();
-        public List<GammesEntity> listGamme ;
+        ComposantsEntity compIsolation = new ComposantsEntity();
+        ComposantsEntity compCouverture = new ComposantsEntity();
+        
+
+        public ObservableCollection<GammesEntity> listGamme { get; set; }
+        public ObservableCollection<ComposantsEntity> listIsolant { get; set; }
 
         public Dashboard()
         {
             InitializeComponent();
-            listGamme = new List<GammesEntity>();
-            GammesController games = new GammesController();
+            this.DataContext = this;
+            BindGamme();
+            BindIsolation();
+        }
 
-            listGamme = games.selectAllGames();
+        private void BindGamme()
+        {
+            listGamme = new ObservableCollection<GammesEntity>();
+            GammesBLL games = new GammesBLL();
+            listGamme = new ObservableCollection<GammesEntity>(games.selectAllGames());
+            
+        }
+        
+        private void BindIsolation()
+        {
+            listIsolant = new ObservableCollection<ComposantsEntity>();
+            ComposantsBLL composants = new ComposantsBLL();
+            listIsolant = new ObservableCollection<ComposantsEntity>(composants.getIsolationComposant());
+        }
+
+        private void BindCouverture()
+        {
+            listIsolant = new ObservableCollection<ComposantsEntity>();
+            ComposantsBLL composants = new ComposantsBLL();
+            listIsolant = new ObservableCollection<ComposantsEntity>(composants.getCouvertureComposant());
         }
 
         public void setCommercial(CommerciauxEntity entering)
@@ -102,12 +132,6 @@ namespace Madera
         {
             creerDevis.Visibility = Visibility.Hidden;
             selectGamme.Visibility = Visibility.Visible;
-
-            //foreach(var item in listGamme)
-            //{
-            //    ChoisirGamme.Items.Add(item);
-            //}
-
         }
      
 
@@ -121,6 +145,9 @@ namespace Madera
         }
         public void goToSelectModele(object sender, RoutedEventArgs e)
         {
+            compIsolation = (ComposantsEntity)ChoisirTypeIsolant.SelectedItem;
+            compCouverture = (ComposantsEntity)ChoisirTypeCouverture.SelectedItem;
+
             selectFinition.Visibility = Visibility.Hidden;
             selectModele.Visibility = Visibility.Visible;
 

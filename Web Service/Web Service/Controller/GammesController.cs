@@ -8,7 +8,7 @@ using Web_Service.Entity;
 
 namespace Web_Service.Controller
 {
-    public class GammesController : GammesDAO
+    public class GammesBLL : GammesDAO
     {
         public List<GammesEntity> selectAllGames()
         {

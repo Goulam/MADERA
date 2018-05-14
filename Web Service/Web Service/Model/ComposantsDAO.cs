@@ -7,7 +7,7 @@ using Web_Service.Entity;
 
 namespace Web_Service.Model
 {
-    public class ComposantsDAO
+    public abstract class ComposantsDAO
     {
         //
         // SELECT
@@ -33,12 +33,11 @@ namespace Web_Service.Model
         // 
         // SELECT ALL
         //
-        public ComposantsEntity getAllComposantById(int IdComposants)
+        public List<ComposantsEntity> getAllComposant()
         {
             using (var context = new MADERA_V1Entities())
             {
                 var composant = (from c in context.MDR_Composants
-                                 where c.Comp_Index == IdComposants
                                  select new ComposantsEntity
                                  {
                                      Comp_Index = c.Comp_Index,
@@ -46,7 +45,45 @@ namespace Web_Service.Model
                                      Comp_Couleur = c.Comp_Couleur,
                                      Comp_Nom = c.Comp_Nom,
                                      Comp_Type = c.Comp_Type
-                                 }).SingleOrDefault();
+                                 }).ToList();
+
+                return composant;
+            }
+        }
+
+        public List<ComposantsEntity> getIsolateComposant()
+        {
+            using (var context = new MADERA_V1Entities())
+            {
+                var composant = (from c in context.MDR_Composants
+                                 where c.Comp_Type == "Isolation"
+                                 select new ComposantsEntity
+                                 {
+                                     Comp_Index = c.Comp_Index,
+                                     Comp_Actif = c.Comp_Actif,
+                                     Comp_Couleur = c.Comp_Couleur,
+                                     Comp_Nom = c.Comp_Nom,
+                                     Comp_Type = c.Comp_Type
+                                 }).ToList();
+
+                return composant;
+            }
+        }
+
+        public List<ComposantsEntity> getCouvertureComposant()
+        {
+            using (var context = new MADERA_V1Entities())
+            {
+                var composant = (from c in context.MDR_Composants
+                                 where c.Comp_Type == "Couverture"
+                                 select new ComposantsEntity
+                                 {
+                                     Comp_Index = c.Comp_Index,
+                                     Comp_Actif = c.Comp_Actif,
+                                     Comp_Couleur = c.Comp_Couleur,
+                                     Comp_Nom = c.Comp_Nom,
+                                     Comp_Type = c.Comp_Type
+                                 }).ToList();
 
                 return composant;
             }
