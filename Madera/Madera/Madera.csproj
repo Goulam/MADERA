@@ -38,12 +38,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -117,9 +116,9 @@
     <Resource Include="madera.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Web Service\Web Service\Web Service.csproj">
+    <ProjectReference Include="..\..\Web Service\Web Service\Madera.ClassLibrary.csproj">
       <Project>{100977c0-80a4-4a30-91c6-b625294d898a}</Project>
-      <Name>Web Service</Name>
+      <Name>Madera.ClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -129,10 +128,26 @@
     <Resource Include="folder_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="madera.png" />
+    <Resource Include="madera.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\background.png" />
+    <Resource Include="image\icone\arrow right.png" />
+    <Resource Include="image\icone\check.png" />
+    <Resource Include="image\icone\checked.png" />
+    <Resource Include="image\icone\error.png" />
+    <Resource Include="image\icone\folder_add.png" />
+    <Resource Include="image\icone\folder_search.png" />
+    <Resource Include="image\icone\home.png" />
+    <Resource Include="image\icone\madera.ico" />
+    <Resource Include="image\icone\user_add.png" />
+    <Resource Include="image\icone\user_search.png" />
+    <Resource Include="image\madera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

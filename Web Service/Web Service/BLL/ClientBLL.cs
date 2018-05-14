@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Web_Service.Model;
-using Web_Service.Entity;
+using Madera.ClassLibrary.Model;
+using Madera.ClassLibrary.Entity;
 
-namespace Web_Service.Controller
+namespace Madera.ClassLibrary.BLL
 {
-    public class ClientController : ClientDAO
+    public class ClientBLL : ClientDAO
     {
         public bool insertClientInDb(ClientEntity client)
         {
@@ -30,7 +30,7 @@ namespace Web_Service.Controller
 
         public List<ClientEntity> getSearchAll(string search)
         {
-            return ClientController.GetSearchAll(search);
+            return ClientBLL.GetSearchAll(search);
         }
     }
 }

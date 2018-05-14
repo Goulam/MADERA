@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Web_Service.Entity;
+using Madera.ClassLibrary.Entity;
 
-namespace Web_Service.Model
+namespace Madera.ClassLibrary.Model
 {
     public class EtatPaiementDAO
     {

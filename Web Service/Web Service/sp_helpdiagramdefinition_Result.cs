@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web_Service
+namespace Madera.ClassLibrary
 {
     using System;
     
