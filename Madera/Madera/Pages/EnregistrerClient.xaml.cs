@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Madera.ClassLibrary.BLL;
+using Madera.ClassLibrary.Entity;
+using System.Collections.ObjectModel;
 
 namespace Madera.Pages
 {
@@ -24,5 +27,38 @@ namespace Madera.Pages
         {
             InitializeComponent();
         }
+
+        public void saveClient(object sender, RoutedEventArgs e)
+        {
+            ClientEntity client = new ClientEntity();
+
+            if (inputNom.Text != "" && inputPrenom.Text != "" && inputPhone.Text != "" && inputEmail.Text != "")
+            {
+                client.Cli_Nom = inputNom.Text;
+                client.Cli_Prenom = inputPrenom.Text;
+                client.Cli_Phone = inputPhone.Text;
+                client.Cli_Email = inputEmail.Text;
+
+                client.Cli_Adresse = inputAdresse1.Text;
+                client.Cli_Ville = inputVille.Text;
+                client.Cli_CP = inputCP.Text;
+                try
+                {
+                    ClientController controlClient = new ClientController();
+                    controlClient.createClient(client);
+                    enregistrerClient.Visibility = Visibility.Hidden;
+                    succesSaveClient.Visibility = Visibility.Visible;
+                }
+                catch (Exception error)
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+        }
     }
+    
 }

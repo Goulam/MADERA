@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="CreateDevis">
-
-    <Grid Name="creerDevis"
+    <Grid>
+        <Grid Name="creerDevis"
               Grid.Column="2"
               Grid.ColumnSpan="8"
               Grid.Row="0"
@@ -33,10 +33,329 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock10" Grid.ColumnSpan="4" Grid.Column="2" TextWrapping="Wrap" Text="Pour créer mon devis" FontSize="24" FontWeight="Bold" Foreground="#FF666633" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0" Width="304.64" Grid.Row="1"/>
-        <TextBlock x:Name="textBlock12" Grid.ColumnSpan="4" Grid.Column="2" Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="Plusieurs étapes :" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Width="304.64"/>
-        <TextBlock x:Name="textBlock13" Grid.ColumnSpan="4" Grid.Column="2" Grid.Row="3" Grid.RowSpan="4" TextWrapping="Wrap" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Margin="0,0,10,0" Width="294.64"><Run Text="Définir la gamme"/><LineBreak/><Run/><LineBreak/><Run Text="Définir la finition"/><LineBreak/><Run/><LineBreak/><Run Text="Définir la couleur"/><LineBreak/><Run/><LineBreak/><Run Text="Saisir les informations client"/><LineBreak/><Run/><LineBreak/><Run Text="Définir la méthode de paiement"/></TextBlock>
-        <Button x:Name="butonSelectGamme" Content="Commencer" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Commencer la création du devis" ClickMode="Press"  Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" VerticalAlignment="Center" Height="40"/>
-        <!--Click="goToSelectGamme"-->
+            <TextBlock x:Name="textBlock10" Grid.ColumnSpan="4" Grid.Column="2" TextWrapping="Wrap" Text="Pour créer mon devis" FontSize="24" FontWeight="Bold" Foreground="#FF666633" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0" Width="304.64" Grid.Row="1"/>
+            <TextBlock x:Name="textBlock12" Grid.ColumnSpan="4" Grid.Column="2" Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="Plusieurs étapes :" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Width="304.64"/>
+            <TextBlock x:Name="textBlock13" Grid.ColumnSpan="4" Grid.Column="2" Grid.Row="3" Grid.RowSpan="4" TextWrapping="Wrap" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Margin="0,0,10,0" Width="294.64"><Run Text="Définir la gamme"/><LineBreak/><Run/><LineBreak/><Run Text="Définir la finition"/><LineBreak/><Run/><LineBreak/><Run Text="Définir la couleur"/><LineBreak/><Run/><LineBreak/><Run Text="Saisir les informations client"/><LineBreak/><Run/><LineBreak/><Run Text="Définir la méthode de paiement"/></TextBlock>
+            <Button x:Name="butonSelectGamme" Content="Commencer" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Commencer la création du devis" ClickMode="Press"  Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" VerticalAlignment="Center" Height="40" Click="goToSelectGamme"/>
+        </Grid>
+        <Grid Name="selectGamme"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="8"
+                  Grid.Row="0"
+                  Grid.RowSpan="8"
+                  Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="choixGamme" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Choisir la gamme : " Margin="0,0,0,0.008" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox x:Name="ChoisirGamme" ItemsSource="{Binding listGamme}" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0" d:LayoutOverrides="Height" VerticalAlignment="Center">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Gam_Nom}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button x:Name="butonArianeGamme" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+                <Button x:Name="butonArianeFinition" Content="2 - Finition" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+                <Button x:Name="butonArianeModèle" Content="3 - Modèle" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+                <Button x:Name="butonArianePièces" Content="4 - Pièces" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+                <Button x:Name="butonArianeClient" Content="5 - Client" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+                <Button x:Name="butonArianePaiement" Content="6 - Paiement" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+                <Button x:Name="butonArianeDémonstration" Content="7 - Démonstration" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+                <Button x:Name="butonArianeEnvoi" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+                <Button x:Name="butonSelectFinition" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Sélectionner la finition" ClickMode="Press" Click="goToSelectFinition" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" VerticalAlignment="Center" Height="40"/>
+            </Grid>
+        <Grid Name="selectFinition"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="8"
+                  Grid.Row="0"
+                  Grid.RowSpan="8"
+                  Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme1" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition1" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle1" Content="3 - Modèle" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces1" Content="4 - Pièces" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient1" Content="5 - Client" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement1" Content="6 - Paiement" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration1" Content="7 - Démonstration" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition1" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TypeIsolant" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Choisir le type d'isolant : " Margin="0,0,0,0.008" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirTypeIsolant" ItemsSource="{Binding listIsolant}" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0" d:LayoutOverrides="Height" VerticalAlignment="Center">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Comp_Nom}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock x:Name="TypeCouverture" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="Choisir le type de couverture : " Margin="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirTypeCouverture" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="4" FontSize="20" Margin="0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TypeRevetement" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="Choisir le type de revetement : " Margin="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirTypeRevetement" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="5" FontSize="20" Margin="0" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectModele" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Sélectionner le modèle" ClickMode="Press" Click="goToSelectModele" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" VerticalAlignment="Center" Height="40"/>
+        </Grid>
+        <Grid Name="selectModele"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme2" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition2" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle2" Content="3 - Modèle" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces2" Content="4 - Pièces" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient2" Content="5 - Client" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement2" Content="6 - Paiement" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration2" Content="7 - Démonstration" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition2" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectPieces" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Sélectionner le modèle" ClickMode="Press" Click="goToSelectPieces" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" VerticalAlignment="Center" Height="40"/>
+        </Grid>
+        <Grid Name="selectPieces"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme3" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition3" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle3" Content="3 - Modèle" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces3" Content="4 - Pièces" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient3" Content="5 - Client" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement3" Content="6 - Paiement" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration3" Content="7 - Démonstration" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition3" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirPieceSupp" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="CouleurPieceSupp" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="Choisir la couleur de la pièce supplémentaire : " Margin="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="63.175"/>
+            <ComboBox x:Name="ChoisirCouleurPieceSupp" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="4" FontSize="20" Margin="0" VerticalAlignment="Center"/>
+            <Button x:Name="butonPlus" Content="Ajouter" Grid.Column="3" Grid.Row="5" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Ajouter une pièce" ClickMode="Press" Click="goToSelectPieces" Margin="0" Panel.ZIndex="-2" VerticalAlignment="Center" Height="30" Grid.ColumnSpan="2"/>
+            <Button x:Name="butonSelectClient" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Sélectionner le client" ClickMode="Press" Click="goToSelectClient" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" Height="40" VerticalAlignment="Center"/>
+            <TextBlock Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Center" Height="63.175" Grid.Row="3" TextWrapping="Wrap" Text="Choisir une pièce supplémentaire : " VerticalAlignment="Center" Width="152.32" FontSize="20"/>
+        </Grid>
+        <Grid Name="selectClient"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme4" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition4" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle4" Content="3 - Modèle" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces4" Content="4 - Pièces" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient4" Content="5 - Client" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement4" Content="6 - Paiement" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration4" Content="7 - Démonstration" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition4" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectPaiement" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Sélectionner le paiement" ClickMode="Press" Click="goToSelectPaiement" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" Height="40" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Name="selectPaiement"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme5" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition5" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle5" Content="3 - Modèle" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces5" Content="4 - Pièces" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient5" Content="5 - Client" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement5" Content="6 - Paiement" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration5" Content="7 - Démonstration" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition5" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <TextBlock x:Name="choixPaiement" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Choisir le type de paiement : " Margin="35.078,4.983,35.078,4.991" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirPaiement" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0,15.287" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectDemonstration" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Voir la démonstration" ClickMode="Press" Click="goToDemonstration" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" Height="40" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Name="selectDemonstration"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme6" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition6" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle6" Content="3 - Modèle" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces6" Content="4 - Pièces" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient6" Content="5 - Client" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement6" Content="6 - Paiement" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration6" Content="7 - Démonstration" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition6" Content="8 - Envoi" Grid.Row="1" Background="#FFA2D1FA" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+
+            <Button x:Name="butonSelectEnvoi" Content="Suivant" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Sélectionner le type d'envoi" ClickMode="Press" Click="goToEnvoi" Margin="0" Grid.ColumnSpan="4" Panel.ZIndex="-2" Height="40" VerticalAlignment="Center"/>
+            <TextBlock Grid.ColumnSpan="6" TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="0" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Top" Width="456.96" FontSize="36" Height="126.35">EN COURS  <LineBreak/> DE DEVELOPPEMENT</TextBlock>
+        </Grid>
+        <Grid Name="selectEnvoi"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button x:Name="butonArianeGamme7" Content="1 - Gamme" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White"  ClickMode="Press" Panel.ZIndex="-2" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeFinition7" Content="2 - Finition" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0" Height="30"/>
+            <Button x:Name="butonArianeModèle7" Content="3 - Modèle" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="2" Height="30" Margin="5,0" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianePièces7" Content="4 - Pièces" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="3" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianeClient7" Content="5 - Client" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="4" Margin="5,16.604,5,16.605" VerticalAlignment="Center" Height="30"/>
+            <Button x:Name="butonArianePaiement7" Content="6 - Paiement" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="5" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonArianeDémonstration7" Content="7 - Démonstration" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="6" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonSelectFinition7" Content="8 - Envoi" Grid.Row="1" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ClickMode="Press" Panel.ZIndex="-2" Grid.Column="7" Margin="5,16.604,5,16.605" Height="30" VerticalAlignment="Center"/>
+            <Button x:Name="butonFinish" Content="Terminer" Grid.Column="2" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Enregistrer le devis" ClickMode="Press" Click="goToFinish" Grid.ColumnSpan="4" Panel.ZIndex="-2" VerticalAlignment="Center" Height="40"/>
+            <TextBlock x:Name="choixEnvoi" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Choisir le type d'envoi : " Margin="35.078,4.983,35.078,4.991" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ChoisirEnvoi" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" FontSize="20" Margin="0,15.287" VerticalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>

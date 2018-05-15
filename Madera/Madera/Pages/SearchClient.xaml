@@ -7,54 +7,164 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="SearchClient">
+    <Grid>
+        <Grid x:Name="searchClient"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="8"
+                  Grid.Row="0"
+                  Grid.RowSpan="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="clientList" Grid.ColumnSpan="6" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4"   AutoGenerateColumns="False" ColumnWidth="Auto" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#FFB7AFA3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Light" HeadersVisibility="Column" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Cli_Index}" Header="Id" Visibility="Hidden" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cli_Nom}" Header="Nom" IsReadOnly="True" FontSize="18"/>
+                    <DataGridTextColumn Binding="{Binding Cli_Prenom}" Header="Prenom" FontSize="18" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cli_Email}" Header="Email" FontSize="18" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cli_Phone}" Header="Téléphone" FontSize="18" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cli_Adresse}" Header="Adresse" FontSize="18" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cli_Ville}" Header="Ville" FontSize="18" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Cli_CP}" Header="Code Postal" FontSize="18" IsReadOnly="True"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="goToModifyClient">Modifier</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock x:Name="textBlock_Copy" Grid.ColumnSpan="4" Grid.Column="2" TextWrapping="Wrap" Text="Rechercher parmis les clients" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="#FF666633" Margin="-30.676,-13.78,-25.675,-18.78"/>
+            <TextBox x:Name="inputSearchClient" Grid.Column="4" Grid.Row="1" TextWrapping="Wrap" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Margin="25,0" Grid.ColumnSpan="3" Height="30" VerticalAlignment="Center" KeyDown="updateSearch"/> 
+            <TextBlock x:Name="textBlock5_Copy" Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Rechercher :" Foreground="#FF666633" FontSize="18" HorizontalAlignment="Left" FontWeight="Light" Margin="26.173,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.479,-0.507"/>
 
-    <Grid x:Name="searchClient"
+        </Grid>
+        <Grid Name="modifierClient"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="8"
+                  Grid.Row="0"
+                  Grid.RowSpan="8"
+                  Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Rectangle Grid.ColumnSpan="3" Fill="#196D929B" Margin="0,0,5,0" Grid.Row="2" Grid.RowSpan="5" Grid.Column="1" RadiusX="10" RadiusY="10"/>
+            <TextBlock x:Name="textBlock111" Grid.ColumnSpan="6" Grid.Column="1" TextWrapping="Wrap" Text="Modification d'un client existant" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="#FF666633" Margin="0,5,5,0"/>
+            <TextBlock x:Name="textBlock11" Grid.ColumnSpan="3" Grid.Column="1" Margin="-0.4,-0.208,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Informations Principales" HorizontalAlignment="Center" FontSize="24" FontWeight="Light" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlock1_Copy1" Grid.ColumnSpan="3" Grid.Column="1" Margin="34.652,-0.208,35.051,0" Grid.Row="1" TextWrapping="Wrap" Text="Obligatoires" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Bottom" FontStyle="Italic" Foreground="Red"/>
+            <TextBox x:Name="modifyNom" Grid.Column="2" Height="21.292" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="20,0"/>
+            <TextBlock x:Name="textBlock21" Grid.Column="1" Height="21.292" Margin="10,0,-0.133,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#FF666633" FontSize="18"><Run FontWeight="Light" Text="Nom "/><Run Text=":"/></TextBlock>
+            <TextBlock x:Name="textBlock2_Copy11" Grid.Column="1" Height="21.292" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Prénom :" Foreground="#FF666633" FontSize="18" FontWeight="Light" Width="76.134" Margin="10,0,0,0"/>
+            <TextBox x:Name="modifyPrenom" Grid.Column="2" Height="21.292" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="20,0"/>
+            <TextBlock x:Name="textBlock2_Copy111" Grid.Column="1" Height="21.292" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Téléphone :" Foreground="#FF666633" FontSize="18" FontWeight="Light" Margin="10,0,0,0"/>
+            <TextBox x:Name="modifyPhone" Grid.Column="2" Height="21.292" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="20,0"/>
+            <TextBlock x:Name="textBlock2_Copy21" Grid.Column="1" Height="21.292" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Email : " Foreground="#FF666633" FontSize="18" FontWeight="Light" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBox x:Name="modifyEmail" Grid.Column="2" Height="21.292" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="20,0"/>
+            <TextBlock x:Name="textBlock31" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="1" TextWrapping="Wrap" Text="Informations Complémentaires" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light"/>
+            <Rectangle Grid.ColumnSpan="3" Fill="#196D929B" Margin="0,0,5,0" Grid.Row="2" Grid.RowSpan="5" Grid.Column="4" RadiusX="10" RadiusY="10"/>
+            <TextBlock x:Name="textBlock41" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" Text="Adresse :" Foreground="#FF666633" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Light" Width="76.134" Margin="10,0,0,0"/>
+            <TextBlock x:Name="textBlock51" Grid.Column="4" Grid.Row="3" TextWrapping="Wrap" Text="Ville :" Foreground="#FF666633" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Light" Margin="10,0,0,0"/>
+            <TextBlock x:Name="textBlock61" Grid.ColumnSpan="3" Grid.Column="4" Margin="-0.133,0,0,-0.319" Grid.Row="1" TextWrapping="Wrap" Text="Falcultatives" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20" FontStyle="Italic" Foreground="#FF295013"/>
+            <TextBlock x:Name="textBlock71" Grid.Column="4" Grid.Row="4" TextWrapping="Wrap" Text="Code Postal : " FontSize="18" FontWeight="Light" Foreground="#FF666633" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBox x:Name="modifyAdresse1" Grid.Column="5" Height="21.292" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="10,0" d:LayoutOverrides="VerticalAlignment"/>
+            <TextBox x:Name="modifyVille" Grid.Column="5" Height="21.292" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="10,0" d:LayoutOverrides="VerticalAlignment"/>
+            <TextBox x:Name="modifyCP" Grid.Column="5" Height="21.292" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Bottom" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Grid.ColumnSpan="2" Margin="10,0" d:LayoutOverrides="VerticalAlignment"/>
+            <Button x:Name="buttonModify" Content="Valider" Grid.Column="3" Grid.Row="7" Background="#FF4376A1" BorderThickness="0" FontWeight="Bold" Foreground="White" ToolTip="Enregistrer le client" ClickMode="Press" Click="sendModifyClient" Margin="0,15" Grid.ColumnSpan="2" Panel.ZIndex="-2"/>
+            <TextBlock x:Name="textBlock9" Grid.Column="1" Height="20.583" Grid.Row="2" TextWrapping="Wrap" Text="Id :" VerticalAlignment="Top" FontWeight="Light" FontSize="16" HorizontalAlignment="Left" Margin="15,5,0,0"/>
+            <TextBlock x:Name="idModifyClient" Grid.Column="1" Height="20.667" Margin="-1.066,5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="succesModifyClient"
               Grid.Column="2"
               Grid.ColumnSpan="8"
               Grid.Row="0"
-              Grid.RowSpan="8">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="clientList" Grid.ColumnSpan="6" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4"   AutoGenerateColumns="False" ColumnWidth="Auto" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#FFB7AFA3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Light" HeadersVisibility="Column" CanUserAddRows="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Cli_Index}" Header="Id" Visibility="Hidden" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Cli_Nom}" Header="Nom" IsReadOnly="True" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Cli_Prenom}" Header="Prenom" FontSize="18" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Cli_Email}" Header="Email" FontSize="18" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Cli_Phone}" Header="Téléphone" FontSize="18" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Cli_Adresse}" Header="Adresse" FontSize="18" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Cli_Ville}" Header="Ville" FontSize="18" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Cli_CP}" Header="Code Postal" FontSize="18" IsReadOnly="True"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button >Modifier</Button> <!--Click="goToModifyClient"-->
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBlock x:Name="textBlock_Copy" Grid.ColumnSpan="4" Grid.Column="2" TextWrapping="Wrap" Text="Rechercher parmis les clients" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="#FF666633" Margin="-30.676,-13.78,-25.675,-18.78"/>
-        <TextBox x:Name="inputSearchClient" Grid.Column="4" Grid.Row="1" TextWrapping="Wrap" BorderThickness="0,0,0,1" BorderBrush="#FF6D929B" Background="#FFC1DAD6" Margin="25,0" Grid.ColumnSpan="3" Height="30" VerticalAlignment="Center" /> <!--KeyDown="updateSearch"-->
-        <TextBlock x:Name="textBlock5_Copy" Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Rechercher :" Foreground="#FF666633" FontSize="18" HorizontalAlignment="Left" FontWeight="Light" Margin="26.173,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.479,-0.507"/>
-
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image x:Name="image_Copy1" Source="checked.png" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="5"/>
+            <TextBlock x:Name="textBlock81" Grid.ColumnSpan="6" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="Le client est bien modfifié" FontSize="36" FontStyle="Italic" Foreground="#FF72C841" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="erroHappen"
+              Grid.Column="2"
+              Grid.ColumnSpan="8"
+              Grid.Row="0"
+              Grid.RowSpan="8"
+              Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image x:Name="image_Copy12" Source="../image/icone/error.png" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="5"/>
+            <TextBlock x:Name="textBlock812" Grid.ColumnSpan="6" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="Une erreur est survenue" FontSize="36" FontStyle="Italic" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>
